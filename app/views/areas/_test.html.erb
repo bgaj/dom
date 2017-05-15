@@ -1,0 +1,171 @@
+<div class="uk-modal-dialog uk-modal-body" style="width: 80%;height: 80%;min-height: 400px;min-width: 800px;">
+  <h4>Zaznacz na mapie działkę (<%= @area.name%>)</h4>
+  <div id="mapp" style="height: 90%">
+    <button id="delete-button" class="btn">Delete selected shape</button>
+    <button id="save-button" class="btn">Save all</button>
+  </div>
+  <script>
+      // This example requires the Drawing library. Include the libraries=drawing
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=drawing">
+      function inittMap() {
+          var ii=0;
+          var lat=0;
+          var lng=0;
+          <% if !@area.coordinates.empty? %>
+          console.log('test');
+          <%- @area.coordinates.each do |cord| %>
+          ii++;
+          lat += <%= cord.coordinate.split(',')[0].to_f %>
+              lng += <%= cord.coordinate.split(',')[1].to_f %>
+                  <%end %>
+                  lat=lat/ii
+          lng=lng/ii
+          <% else %>
+          lat=51.3506076;
+          lng=19.6429966;
+          <% end %>
+          var map = new google.maps.Map(document.getElementById('mapp'), {
+              zoom:16,
+              center: new google.maps.LatLng(lat,lng),
+              mapTypeId: 'satellite',
+              noClear:true
+          });
+          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM]
+              .push(document.getElementById('save-button'));
+          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM]
+              .push(document.getElementById('delete-button'));
+          var polyOptions = {
+              strokeWeight: 3,
+              fillOpacity: 0.2
+          };
+          var triangleCoords = [
+              <%- @area.coordinates.each do |cord| %>
+              new google.maps.LatLng(<%= cord.coordinate %>),
+              <%end %>
+          ];
+
+
+          var myLatLng = {lat: 51.3506076, lng: 19.6429966};
+
+          var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: 'Dom'
+          });
+          marker.setMap(map);
+          // Styling & Controls
+          myPolygon = new google.maps.Polygon({
+              paths: triangleCoords,
+              draggable: false, // turn off if it gets annoying
+              editable: false,
+              strokeColor: '#f0f',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#0f0',
+              fillOpacity: 0.35
+          });
+          myPolygon.setMap(map);
+
+          var shapes={
+              collection:{},
+              selectedShape:null,
+              add:function(e){
+                  var shape=e.overlay,
+                      that=this;
+                  shape.type=e.type;
+                  shape.id=new Date().getTime()+'_'+Math.floor(Math.random()*1000);
+                  this.collection[shape.id]=shape;
+                  this.setSelection(shape);
+                  google.maps.event.addListener(shape,'click',function(){
+                      that.setSelection(this);
+                  });
+              },
+              setSelection:function(shape){
+                  if(this.selectedShape!==shape){
+                      this.clearSelection();
+                      this.selectedShape = shape;
+                      shape.set('draggable',true);
+                      shape.set('editable',true);
+                  }
+              },
+              deleteSelected:function(){
+
+                  if(this.selectedShape){
+                      var shape= this.selectedShape;
+                      this.clearSelection();
+                      shape.setMap(null);
+                      delete this.collection[shape.id];
+                  }
+                  drawingManager.setOptions({
+                      drawingMode: google.maps.drawing.OverlayType.POLYGON
+                  });
+              },
+
+
+              clearSelection:function(){
+                  if(this.selectedShape){
+                      this.selectedShape.set('draggable',false);
+                      this.selectedShape.set('editable',false);
+                      this.selectedShape=null;
+                  }
+              },
+              save:function(){
+                  var collection=[];
+                  for(var k in this.collection){
+                      var shape=this.collection[k],
+                          types=google.maps.drawing.OverlayType;
+                      switch(shape.type){
+                          case types.POLYGON:
+
+                              var len = shape.getPath().getLength();
+                              for (var i = 0; i < len; i++) {
+                                  collection.push(shape.getPath().getAt(i).toUrlValue(5));
+                              }
+                              break;
+                          default:
+                              alert('implement a storage-method for '+shape.type)
+                      }
+                  }
+                  //collection is the result
+                  $.ajax({
+                      type: "POST",
+                      url: "<%= area_coords_path(@area) %>",
+                      data: {coords: JSON.stringify(collection)}
+                  });
+                  console.log(collection);
+              }
+          };
+
+          var drawingManager = new google.maps.drawing.DrawingManager({
+              drawingControl: false,
+              drawingControlOptions: {
+                  drawingModes: [google.maps.drawing.OverlayType.POLYGON]
+              },
+              drawingMode: google.maps.drawing.OverlayType.POLYGON,
+              polygonOptions: polyOptions,
+              map: map
+          });
+
+          google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+              drawingManager.setDrawingMode(null);
+              shapes.add(e);
+          });
+
+
+          google.maps.event.addListener(drawingManager,
+              'drawingmode_changed',
+              function(){shapes.clearSelection();});
+          google.maps.event.addListener(map,
+              'click',
+              function(){shapes.clearSelection();});
+          google.maps.event.addDomListener(document.getElementById('delete-button'),
+              'click',
+              function(){shapes.deleteSelected();});
+          google.maps.event.addDomListener(document.getElementById('save-button'),
+              'click',
+              function(){shapes.save();});
+
+      }
+  </script>
+</div>

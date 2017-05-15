@@ -12,6 +12,10 @@
     = javascript_include_tag 'application'
     %body{ data: { controller: controller_name, action: action_name } }
       = render 'shared/header'
-      = yield
+      .uk-grid
+        .uk-width-1-5
+          = render 'shared/sidebar'
+        .uk-width-4-5
+          = yield
       = render 'shared/footer'
 

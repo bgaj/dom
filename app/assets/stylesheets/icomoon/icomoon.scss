@@ -4,13 +4,12 @@
   font-family: 'icomoon';
   src:  font-url('icomoon.eot?tswbe4');
   src:  font-url('icomoon.eot?tswbe4#iefix') format('embedded-opentype'),
-    font-url('icomoon.ttf?tswbe4') format('truetype'),
-    font-url('icomoon.woff?tswbe4') format('woff'),
-    font-url('icomoon.svg?tswbe4#icomoon') format('svg');
+  font-url('icomoon.ttf?tswbe4') format('truetype'),
+  font-url('icomoon.woff?tswbe4') format('woff'),
+  font-url('icomoon.svg?tswbe4#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -26,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-ear-of-wheat:before {
+  content: "\e900";
+}
+.icon-tractor:before {
+  content: "\e925";
+}
+.icon-search_PZU:before {
+  content: "\e916";
+}
 .icon-down_arrow:before {
   content: "\e90b";
 }
@@ -40,70 +48,56 @@
 }
 .icon-PA_tick:before {
   content: "\e90f";
+  color: #007bc1;
 }
 .icon-PA_edit:before {
   content: "\e90a";
-}
-.icon-zglaszane_pomysly:before {
-  content: "\e915";
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50%;
+  color: #007bc1;
 }
 .icon-komentowane:before {
   content: "\e911";
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50%;
-}
-.icon-obserwowane:before {
-  content: "\e912";
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50%;
 }
 .icon-oddane_glosy:before {
   content: "\e913";
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50%;
 }
 .icon-user:before {
   content: "\e914";
 }
-.icon-PA_edit2:before {
-  content: "\e910";
-}
-.icon-PA_duplikaty:before {
-  content: "\e900";
-}
-.icon-PA_kategorie:before {
-  content: "\e901";
-}
 .icon-PA_moderacja:before {
   content: "\e902";
+  color: #003c7d;
 }
 .icon-PA_no:before {
   content: "\e903";
+  color: #de6f78;
 }
 .icon-PA_ok:before {
   content: "\e904";
-}
-.icon-PA_pomysly:before {
-  content: "\e905";
-}
-.icon-PA_rangi:before {
-  content: "\e906";
+  color: #007bc1;
 }
 .icon-PA_statusy:before {
   content: "\e907";
+  color: #003c7d;
 }
 .icon-PA_statystyki:before {
   content: "\e908";
+  color: #003c7d;
 }
-.icon-PA_uzytkownicy:before {
-  content: "\e909";
+.icon-bell:before {
+  content: "\e951";
 }
-.icon-folder-open:before {
-  content: "\e930";
+.icon-cogs:before {
+  content: "\e995";
+}
+.icon-bin:before {
+  content: "\e9ac";
+}
+.icon-list-numbered:before {
+  content: "\e9b9";
+}
+.icon-download3:before {
+  content: "\e9c7";
+}
+.icon-cross:before {
+  content: "\ea0f";
 }

@@ -1,0 +1,17 @@
+.uk-container-center.uk-container
+  %table.uk-table.uk-table-condensed
+    %thead
+      %tr
+        %td
+          %h4 Pole
+        %td
+          %h4 Powierzchnia
+        %td
+          %h4 Klasa
+        %td
+          %h4 akcje
+      = render @areas
+  #area_modal.uk-modal
+  = link_to 'Dodaj nowe pole', new_area_path
+= render 'areas_map'
+= render 'testt'

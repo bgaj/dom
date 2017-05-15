@@ -1,0 +1,12 @@
+%tr
+  %td
+    = area.name
+  %td
+    = area.area
+    ha
+  %td
+    = area.area_class.name unless area.area_class.nil?
+  %td
+    = link_to "mapka", area_show_modal_path(area), method: :post, remote: true
+    = link_to "edytuj", edit_area_path(area)
+    = link_to "Usuń", area_path(area), method: :delete, data: { confirm: 'Napewno chcesz usunąć pole' }

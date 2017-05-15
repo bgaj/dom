@@ -16,6 +16,7 @@
 //= require uikit/components/form-select.js
 //= require uikit/components/sticky.min
 //= require uikit/components/notify.min
+//= require uikit/core/modal.js
 //= require jquery_ujs
 
 
@@ -81,7 +82,7 @@ var Eengine2017 = {
 
 $(document).ready(function(){
     Eengine2017.ready();
-    Eengine2017.ee_menu_order();
+    // Eengine2017.ee_menu_order();
 
 
 
