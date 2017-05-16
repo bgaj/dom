@@ -1,0 +1,8 @@
+= simple_form_for @crop do |f|
+  = f.input :kind, collection: Crop.kinds,value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
+  = f.input :variant
+  = f.association :area
+  = f.input :sown_at
+  = f.input :harvest_at
+  = f.input :crop
+  = f.button :submit, "Zapisz"

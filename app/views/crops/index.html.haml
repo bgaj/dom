@@ -1,0 +1,19 @@
+.uk-container-center.uk-container
+  %table.uk-table.uk-table-condensed
+    %thead
+      %tr
+        %td
+          %h4 Rodzaj
+        %td
+          %h4 Pole
+        %td
+          %h4 Zasiane
+        %td
+          %h4 Zebrane
+        %td
+          %h4 Odmiana
+        %td
+          %h4 Plon
+      = render @crops
+  = link_to 'Dodaj nowea akcje', new_crop_path
+

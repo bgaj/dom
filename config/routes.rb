@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :crops
   resources :areas, path: '/pola'  do
     post '/coords' => "areas#coords", as: 'coords'
     post '/show_modal' => 'areas#show_modal'
   end
   resources :events
+  resources :crops
   devise_for :users, path: 'admin'
   get 'welcome/index'
   root 'welcome#index'

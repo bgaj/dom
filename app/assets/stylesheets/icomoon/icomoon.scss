@@ -10,6 +10,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -25,6 +26,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cow:before {
+  content: "\e901";
+}
+.icon-pig:before {
+  content: "\e905";
+}
+.icon-shovel-to-dig:before {
+  content: "\e906";
+}
 .icon-ear-of-wheat:before {
   content: "\e900";
 }
@@ -83,6 +93,12 @@
   content: "\e908";
   color: #003c7d;
 }
+.icon-map:before {
+  content: "\e94b";
+}
+.icon-map2:before {
+  content: "\e94c";
+}
 .icon-bell:before {
   content: "\e951";
 }
@@ -97,6 +113,9 @@
 }
 .icon-download3:before {
   content: "\e9c7";
+}
+.icon-earth:before {
+  content: "\e9ca";
 }
 .icon-cross:before {
   content: "\ea0f";
