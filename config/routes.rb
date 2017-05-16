@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: { sessions: 'sessions' }
+
   resources :crops
   resources :areas, path: '/pola'  do
     post '/coords' => "areas#coords", as: 'coords'
@@ -7,12 +9,9 @@ Rails.application.routes.draw do
   end
   resources :events
   resources :crops
-  devise_for :users, path: 'admin'
+
   get 'welcome/index'
   root 'welcome#index'
 
-  namespace :admin do
-    root to: 'dashboard#home', as: :root
-  end
 
 end
