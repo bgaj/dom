@@ -31,10 +31,10 @@ pl:
     #     age: 'Select your age'
   activerecord:
     attributes:
-      idea:
-        statuses:
-          fresh: "Nowy"
-          activated: "Zatwierdzony"
-          featured: "Zaopiniowany"
-          blocked: "Odrzucony"
-          accepted: "Do wdrożenia"
+      action:
+        events:
+          orka: "Oranie"
+          oprysk: "Opryskiwanie"
+          nawozenie: "Nawożenie"
+          uprawa: "Uprawa"
+          koszenie: "Koszenie"

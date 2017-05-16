@@ -1,0 +1,17 @@
+.uk-container-center.uk-container
+  %table.uk-table.uk-table-condensed
+    %thead
+      %tr
+        %td
+          %h4 Akcja
+        %td
+          %h4 Opis
+        %td
+          %h4 Data
+        %td
+          %h4 Opis
+        %td
+          %h4 Pola
+      = render @events
+  = link_to 'Dodaj nowea akcje', new_event_path
+

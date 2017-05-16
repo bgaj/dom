@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post '/coords' => "areas#coords", as: 'coords'
     post '/show_modal' => 'areas#show_modal'
   end
+  resources :events
   devise_for :users, path: 'admin'
   get 'welcome/index'
   root 'welcome#index'

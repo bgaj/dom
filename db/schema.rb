@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513125556) do
+ActiveRecord::Schema.define(version: 20170515195144) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
@@ -28,12 +28,29 @@ ActiveRecord::Schema.define(version: 20170513125556) do
     t.index ["area_class_id"], name: "index_areas_on_area_class_id", using: :btree
   end
 
+  create_table "areas_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer "event_id"
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_areas_events_on_area_id", using: :btree
+    t.index ["event_id"], name: "index_areas_events_on_event_id", using: :btree
+  end
+
   create_table "coordinates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "coordinate"
     t.integer  "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_coordinates_on_area_id", using: :btree
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer  "event"
+    t.date     "made_at"
+    t.text     "description", limit: 65535
+    t.text     "comment",     limit: 65535
+    t.float    "cost",        limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|

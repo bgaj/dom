@@ -1,0 +1,8 @@
+= simple_form_for @event do |f|
+  = f.input :event, collection: Event.events,value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.event.actions.#{elem[0]}") }
+  = f.input :description
+  = f.input :made_at
+  = f.association :areas
+  = f.input :comment
+  = f.input :cost
+  = f.button :submit, "Zapisz"
