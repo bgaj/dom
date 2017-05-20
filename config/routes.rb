@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :machines
   devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: { sessions: 'sessions' }
 
   resources :crops
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :events
   resources :crops
+  resources :machines
 
   get 'welcome/index'
   root 'welcome#index'

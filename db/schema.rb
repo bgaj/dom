@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516175207) do
+ActiveRecord::Schema.define(version: 20170519140830) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20170516175207) do
     t.float    "cost",        limit: 24
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string   "name"
+    t.float    "hours",       limit: 24
+    t.date     "buy"
+    t.date     "sell"
+    t.date     "made_at"
+    t.string   "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|

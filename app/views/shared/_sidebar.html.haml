@@ -1,10 +1,22 @@
-%ul
-  %li
-    = link_to  areas_path do
-      %span.icon-map Pola
-  %li
-    = link_to  events_path do
-      %span.icon-shovel-to-dig Zdarzenia
-  %li
-    = link_to  crops_path do
-      %span.icon-ear-of-wheat Uprawy
+.fm-sidebar
+  %ul
+    %li
+      = link_to  areas_path, {class: ('active' if current_page?(controller: 'areas'))} do
+        %span.icon-map.fm-sidebar-icon
+        Pola
+        %span.icon-down_arrow
+    %li
+      = link_to  events_path, {class: ('active' if current_page?(controller: 'events'))} do
+        %span.icon-shovel-to-dig.fm-sidebar-icon
+        Zdarzenia
+        %span.icon-down_arrow
+    %li
+      = link_to  crops_path, {class: ('active' if current_page?(controller: 'crops'))} do
+        %span.icon-ear-of-wheat.fm-sidebar-icon
+        Uprawy
+        %span.icon-down_arrow
+    %li
+      = link_to  machines_path, {class: ('active' if current_page?(controller: 'machines'))} do
+        %span.icon-tractor.fm-sidebar-icon
+        Maszyny
+        %span.icon-down_arrow

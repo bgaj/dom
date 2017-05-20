@@ -1,0 +1,13 @@
+%tr
+  %td
+    = machine.name
+  %td
+    = machine.description
+    ha
+  %td
+    = machine.buy
+  %td
+    = machine.made_at
+  %td
+    = link_to "edytuj", edit_machine_path(machine)
+    = link_to "Usuń", machine_path(machine), method: :delete, data: { confirm: 'Napewno chcesz usunąć maszynę' }

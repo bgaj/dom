@@ -230,3 +230,47 @@ header{
     }
   }
 }
+header{
+  background: #252C2F;
+}
+.fm-sidebar{
+  background: #2F2F2F;
+  padding-bottom: 50px;
+  ul{
+    list-style-type: none;
+    padding: 0;
+    a{
+      padding: 10px 0 10px 15px;
+      background: linear-gradient(#424242, #3a3a3a);
+      border-bottom: 1px solid #313131;
+      position: relative;
+      display: block;
+      font-size: 13px;
+      color: white;
+      border-left: 4px solid transparent;
+      &.active{
+        border-left: 4px solid #E79F39;
+        background: #2F2F2F;
+        box-shadow: inset 0px 0px 5px -1px black;
+      }
+      &:hover{
+        color: #E79F39;
+      }
+    }
+    .fm-sidebar-icon{
+      font-size: 26px;
+    }
+    span{
+      vertical-align: middle;
+      padding-right: 5px;
+    }
+    span.icon-down_arrow {
+      position: absolute;
+      right: 9px;
+      padding: 0;
+      font-size: 6px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+  }
+}

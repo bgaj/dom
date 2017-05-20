@@ -1,0 +1,17 @@
+.uk-container-center.uk-container
+  %table.uk-table.uk-table-condensed
+    %thead
+      %tr
+        %td
+          %h4 Maszyna
+        %td
+          %h4 Opis
+        %td
+          %h4 Data Zakupu
+        %td
+          %h4 Rok produkcji
+        %td
+          %h4 Akcje
+      = render @machines
+  #area_modal.uk-modal
+  = link_to 'Dodaj nową maszynę', new_machine_path
