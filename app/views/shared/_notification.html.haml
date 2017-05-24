@@ -1,0 +1,16 @@
+- if flash[:error]
+  .uk-alert.app-notify
+    %a.uk-alert-close.uk-close
+    %p= flash[:error]
+- if flash[:notice]
+  .uk-alert.notice-notify.app-notify
+    %a.uk-alert-close.uk-close
+    %p= flash[:notice]
+- if flash[:success]
+  .uk-alert.app-notify
+    %a.uk-alert-close.uk-close
+    %p= flash[:success]
+- if flash[:info]
+  .uk-alert.app-notify
+    %a.uk-alert-close.uk-close
+    %p= flash[:info]

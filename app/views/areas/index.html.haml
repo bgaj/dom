@@ -1,17 +1,21 @@
-.uk-container-center.uk-container
-  %table.uk-table.uk-table-condensed
-    %thead
-      %tr
-        %td
-          %h4 Pole
-        %td
-          %h4 Powierzchnia
-        %td
-          %h4 Klasa
-        %td
-          %h4 akcje
-      = render @areas
-  #area_modal.uk-modal
-  = link_to 'Dodaj nowe pole', new_area_path
-= render 'areas_map'
+.table-content
+  = render 'areas_map'
+= render 'shared/notification'
+.table-content
+  .uk-overflow-container.table-inside
+    %table.uk-table
+      %thead
+        %tr
+          %th
+            %h4 Pole
+          %th
+            %h4 Powierzchnia
+          %th
+            %h4 Klasa
+          %th
+            %h4 akcje
+      %tbody
+        = render @areas
+    = link_to 'Dodaj nowe pole', new_area_path, class: 'uk-button uk-button-primary uk-button-large'
+#area_modal.uk-modal
 = render 'testt'

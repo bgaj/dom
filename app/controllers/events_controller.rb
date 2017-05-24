@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  add_breadcrumb "Zdarzenia", :events_path
+  before_action :set_breadcrumb_title
+  def set_breadcrumb_title
+    @breadcrumb_title="Zdarzenia"
+  end
   # GET /areas
   # GET /areas.json
   def index

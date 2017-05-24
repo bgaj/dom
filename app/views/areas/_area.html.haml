@@ -6,7 +6,10 @@
     ha
   %td
     = area.area_class.name unless area.area_class.nil?
-  %td
-    = link_to "mapka", area_show_modal_path(area), method: :post, remote: true
-    = link_to "edytuj", edit_area_path(area)
-    = link_to "Usuń", area_path(area), method: :delete, data: { confirm: 'Napewno chcesz usunąć pole' }
+  %td.actions
+    = link_to area_show_modal_path(area), method: :post,"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Zaznacz pole na mapie" ,remote: true do
+      %span.icon-map2.special
+    = link_to edit_area_path(area),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj pole"  do
+      %span.uk-icon-edit.edit
+    = link_to area_path(area), method: :delete, data: { confirm: 'Napewno chcesz usunąć pole. Wszystkie zdarzenia dla tego pola zostaną usunięte' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń pole"   do
+      %span.uk-icon-remove.destroy

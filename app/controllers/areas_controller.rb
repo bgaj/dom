@@ -1,7 +1,12 @@
 class AreasController < ApplicationController
   before_action :set_area, only: [:show, :edit, :update, :destroy]
   before_action :set_area_nested, only: [:show_modal, :coords]
+  add_breadcrumb "Pola", :areas_path
+  before_action :set_breadcrumb_title
 
+  def set_breadcrumb_title
+    @breadcrumb_title="Pola"
+  end
   # GET /areas
   # GET /areas.json
   def index
@@ -33,15 +38,18 @@ class AreasController < ApplicationController
   end
 
   def new
+    add_breadcrumb "Nowe"
     @area = Area.new
   end
   # GET /areas/1/edit
   def edit
+    add_breadcrumb "Edycja"
   end
 
   # POST /areas
   # POST /areas.json
   def create
+    add_breadcrumb "Nowe"
     @area = Area.new(area_params)
     if @area.save
       redirect_to areas_path, notice: 'Area was successfully created.'
@@ -53,6 +61,7 @@ class AreasController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
+    add_breadcrumb "Edycja"
     if @area.update(area_params)
       redirect_to areas_path, notice: 'Area was successfully updated.'
     else
@@ -65,7 +74,7 @@ class AreasController < ApplicationController
   def destroy
     @area.destroy
     respond_to do |format|
-      format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
+      format.html { redirect_to areas_url, notice: 'Pole zostało pomyślnie usunięte.' }
       format.json { head :no_content }
     end
   end

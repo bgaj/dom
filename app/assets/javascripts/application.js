@@ -15,6 +15,7 @@
 //= require uikit/components/grid.min
 //= require uikit/components/form-select.js
 //= require uikit/components/sticky.min
+//= require uikit/components/tooltip.js
 //= require uikit/components/notify.min
 //= require uikit/core/modal.js
 //= require jquery_ujs

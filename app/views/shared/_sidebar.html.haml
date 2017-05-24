@@ -1,22 +1,25 @@
 .fm-sidebar
+  .user_box
+    = image_tag('avatar.png')
+    %p Piotr Gaj
   %ul
     %li
       = link_to  areas_path, {class: ('active' if current_page?(controller: 'areas'))} do
         %span.icon-map.fm-sidebar-icon
-        Pola
-        %span.icon-down_arrow
+        %span.mobile-hide Pola
+        %span.mobile-hide.icon-down_arrow
     %li
       = link_to  events_path, {class: ('active' if current_page?(controller: 'events'))} do
         %span.icon-shovel-to-dig.fm-sidebar-icon
-        Zdarzenia
-        %span.icon-down_arrow
+        %span.mobile-hide Zdarzenia
+        %span.icon-down_arrow.mobile-hide
     %li
       = link_to  crops_path, {class: ('active' if current_page?(controller: 'crops'))} do
         %span.icon-ear-of-wheat.fm-sidebar-icon
-        Uprawy
-        %span.icon-down_arrow
+        %span.mobile-hide Uprawy
+        %span.icon-down_arrow.mobile-hide
     %li
       = link_to  machines_path, {class: ('active' if current_page?(controller: 'machines'))} do
         %span.icon-tractor.fm-sidebar-icon
-        Maszyny
-        %span.icon-down_arrow
+        %span.mobile-hide Maszyny
+        %span.icon-down_arrow.mobile-hide

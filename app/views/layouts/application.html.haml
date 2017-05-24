@@ -11,11 +11,11 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     %body{ data: { controller: controller_name, action: action_name } }
-      = render 'shared/header'
-      .uk-grid
-        .uk-width-1-5
+      .whole-page
+        .page-sidebar
           = render 'shared/sidebar'
-        .uk-width-4-5
-          = yield
-      = render 'shared/footer'
+        .page-wrapper
+          .main
+            = render 'shared/header'
+            = yield
 

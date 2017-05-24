@@ -1,17 +1,20 @@
-.uk-container-center.uk-container
-  %table.uk-table.uk-table-condensed
-    %thead
-      %tr
-        %td
-          %h4 Akcja
-        %td
-          %h4 Opis
-        %td
-          %h4 Data
-        %td
-          %h4 Opis
-        %td
-          %h4 Pola
-      = render @events
+= render 'shared/notification'
+.table-content
+  .uk-overflow-container.table-inside
+    %table.uk-table
+      %thead
+        %tr
+          %td
+            %h4 Akcja
+          %td
+            %h4 Opis
+          %td
+            %h4 Data
+          %td
+            %h4 Opis
+          %td
+            %h4 Pola
+      %tbody
+        = render @events
   = link_to 'Dodaj nowea akcje', new_event_path
 

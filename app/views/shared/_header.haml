@@ -1,6 +1,11 @@
-%header
-  .header-menu
-    %nav.uk-navbar
-      .uk-container.uk-container-center
-        = link_to root_url do
-          Gospodarstwo Rolne
+%header.uk-flex.uk-flex-space-between.uk-flex-middle
+  .right
+    %a.uk-navbar-toggle.menu-btn
+  .left.uk-flex
+  = link_to destroy_user_session_path, method: :delete do
+    %span.uk-icon-sign-out.uk-icon-justify
+    Wyloguj się
+- if @breadcrumb_title
+  .breadcrumb
+    %h2= @breadcrumb_title
+    = render_breadcrumbs

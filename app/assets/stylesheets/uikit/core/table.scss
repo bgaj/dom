@@ -64,13 +64,16 @@ $table-active-background:                        $table-hover-background !defaul
     padding: $table-padding-vertical $table-padding-horizontal;
     @include hook-table();
 }
-
+.uk-table td, .uk-table th {
+  padding: 8px 8px;
+  border-bottom: 1px solid #E5E5E5;
+}
 /*
  * Set alignment
  */
 
 .uk-table th { text-align: left; }
-.uk-table td { vertical-align: top; }
+.uk-table td { vertical-align: middle; }
 
 .uk-table thead th { vertical-align: bottom; }
 
