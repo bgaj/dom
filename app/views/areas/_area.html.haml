@@ -6,6 +6,8 @@
     ha
   %td
     = area.area_class.name unless area.area_class.nil?
+  %td
+    = t("activerecord.attributes.area.statuses.#{area.status}")
   %td.actions
     = link_to area_show_modal_path(area), method: :post,"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Zaznacz pole na mapie" ,remote: true do
       %span.icon-map2.special

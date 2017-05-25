@@ -1,5 +1,12 @@
-= simple_form_for @area do |f|
-  = f.input :name
-  = f.input :area
-  = f.association :area_class
-  = f.button :submit, "Zapisz"
+= simple_form_for @area, html: { class: "uk-form"}  do |f|
+  = f.input :name, label: "Nazwa"
+  .uk-grid
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :area, label: "Powierzchnia"
+      %p.form-field-info *Wyrażona w hektarach
+    = f.input :status, collection: Area.statuses, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, include_blank: false, label: "Status pola",value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.area.statuses.#{elem[0]}") }
+    = f.association :area_class,wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{class: 'f-selectize-input'}, label: "Klasa ziemi"
+    = f.input :cultivate_from, as: :string,wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Uprawiane od"
+  = f.input :comment, as: :text,input_html:{"rows" => "5"}, label: "Dodatkowy komentarz"
+  %p.form-field-info *Tutaj możesz zamieścić wszystkie informacje związane z polem
+  = f.button :button, "Zapisz", class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

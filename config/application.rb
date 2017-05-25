@@ -21,6 +21,12 @@ module PublicRuby
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.time_zone = 'Europe/Warsaw'
+
+    config.i18n.available_locales = [:pl, :en]
+    config.i18n.default_locale = :pl
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
+
     config.assets.precompile << /\.(?:svg|eot|woff|ttf|woff2)\z/
 
     config.autoload_paths += Dir[ Rails.root.join('app', 'models', '**/'), Rails.root.join('app', 'services', '**/') ]

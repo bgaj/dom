@@ -33,7 +33,7 @@ pl:
     attributes:
       action:
         events:
-          orka: "Oranie"
+          orka: "Oranie1"
           oprysk: "Opryskiwanie"
           nawozenie: "Nawożenie"
           uprawa: "Uprawa"
@@ -50,3 +50,7 @@ pl:
           trawa: "Trawa"
           ziemniaki: "Ziemniaki"
           jeczmien: "Jęczmień"
+      area:
+        statuses:
+          own: "Własne"
+          lease: "Dzierżawa"
