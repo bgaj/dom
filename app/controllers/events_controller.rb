@@ -20,15 +20,18 @@ class EventsController < ApplicationController
   # GET /areas/new
 
   def new
+    add_breadcrumb "Nowe"
     @event = Event.new
   end
   # GET /areas/1/edit
   def edit
+    add_breadcrumb "Edycja"
   end
 
   # POST /areas
   # POST /areas.json
   def create
+    add_breadcrumb "Nowe"
     @event = Event.new(event_params)
     if @event.save
       redirect_to events_path, notice: 'Action was successfully created.'
@@ -40,6 +43,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
+    add_breadcrumb "Edycja"
     if @event.update(event_params)
       redirect_to events_path, notice: 'Action was successfully updated.'
     else
@@ -65,6 +69,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:event, :made_at, :description, :cost, :comment, :area_ids => [])
+      params.require(:event).permit(:event, :made_at, :description, :cost, :area_ids => [])
     end
 end

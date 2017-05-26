@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519140830) do
+ActiveRecord::Schema.define(version: 20170525171149) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
@@ -21,10 +21,13 @@ ActiveRecord::Schema.define(version: 20170519140830) do
 
   create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
-    t.float    "area",          limit: 24
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.float    "area",           limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "area_class_id"
+    t.integer  "status"
+    t.date     "cultivate_from"
+    t.string   "comment"
     t.index ["area_class_id"], name: "index_areas_on_area_class_id", using: :btree
   end
 

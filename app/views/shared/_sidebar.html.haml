@@ -9,14 +9,14 @@
         %span.mobile-hide Pola
         %span.mobile-hide.icon-down_arrow
     %li
-      = link_to  events_path, {class: ('active' if current_page?(controller: 'events'))} do
-        %span.icon-shovel-to-dig.fm-sidebar-icon
-        %span.mobile-hide Zdarzenia
-        %span.icon-down_arrow.mobile-hide
-    %li
       = link_to  crops_path, {class: ('active' if current_page?(controller: 'crops'))} do
         %span.icon-ear-of-wheat.fm-sidebar-icon
         %span.mobile-hide Uprawy
+        %span.icon-down_arrow.mobile-hide
+    %li
+      = link_to  events_path, {class: ('active' if current_page?(controller: 'events'))} do
+        %span.icon-shovel-to-dig.fm-sidebar-icon
+        %span.mobile-hide Zdarzenia
         %span.icon-down_arrow.mobile-hide
     %li
       = link_to  machines_path, {class: ('active' if current_page?(controller: 'machines'))} do

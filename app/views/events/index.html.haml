@@ -5,16 +5,16 @@
       %thead
         %tr
           %td
-            %h4 Akcja
-          %td
-            %h4 Opis
-          %td
-            %h4 Data
+            %h4 Rodzaj
           %td
             %h4 Opis
           %td
             %h4 Pola
+          %td
+            %h4 Data
+          %td
+            %h4 Akcje
       %tbody
         = render @events
-  = link_to 'Dodaj nowea akcje', new_event_path
+    = link_to 'Dodaj nowe zdarzenie', new_event_path, class: 'uk-button uk-button-primary uk-button-large'
 

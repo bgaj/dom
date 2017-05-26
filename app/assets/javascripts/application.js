@@ -17,8 +17,12 @@
 //= require uikit/components/sticky.min
 //= require uikit/components/tooltip.js
 //= require uikit/components/notify.min
+//= require uikit/components/notify.min
+//= require uikit/components/datepicker.js
+//= require uikit/components/form-select.js
 //= require uikit/core/modal.js
 //= require jquery_ujs
+//= require selectize
 
 
 var lastScrollPos = 0;
@@ -48,42 +52,16 @@ var Eengine2017 = {
     },
 
     load: function () {},
-    ee_menu_order: function () {
-        /* pokazywanie/ukrywanie menu przy przewijaniu */
-        $navbar = jQuery('.header-menu');
-        $navbar_height = $navbar.height();
-        $header_height = jQuery('#header').height();
-        $window = jQuery(window);
+    selectizeInit: function(){
+        $('.f-selectize-input').selectize({
 
-        // ustawianie minimalnej wysokości dla całego header
-        jQuery('#header').css('min-height', $header_height);
-
-        $window.scroll(function(event){
-            if ($window.scrollTop() > $header_height+20) {
-                if (!$navbar.hasClass('float-menu') ) {
-                    $navbar.addClass('float-menu');
-                }
-                if(detectScrollDirection() == 'u'){
-                    if ($navbar.hasClass('float-menu') && !$navbar.hasClass('rollIn')) {
-                        $navbar.addClass('rollIn');
-                    }
-                } else {
-                    if ($navbar.hasClass('rollIn')) {
-                        $navbar.removeClass('rollIn');
-                    }
-                }
-            } else if ($navbar.hasClass('float-menu')){
-                $navbar.removeClass('float-menu');
-                $navbar.removeClass('rollIn');
-            }
         });
-        /* !pokazywanie/ukrywanie menu przy przewijaniu */
     }
 };
 
 $(document).ready(function(){
     Eengine2017.ready();
-    // Eengine2017.ee_menu_order();
+    Eengine2017.selectizeInit();
 
 
 
