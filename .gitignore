@@ -17,6 +17,8 @@
 .byebug_history
 /log
 /tmp
+/public/assets
+/config/secrets.yml
 /.idea
 .env
 docker-compose.yml
