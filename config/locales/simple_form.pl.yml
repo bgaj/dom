@@ -38,6 +38,7 @@ pl:
           nawozenie: "Nawożenie"
           uprawa: "Uprawa"
           koszenie: "Koszenie"
+      event:
         kinds:
           pszenica: "Pszenica"
           pszenzyto: "Pszenżyto"
@@ -54,3 +55,11 @@ pl:
         statuses:
           own: "Własne"
           lease: "Dzierżawa"
+  helpers:
+    submit:
+      area:
+        create: "Dodaj nowe pole"
+        update: "Aktualizuj pole"
+      event:
+        create: "Dodaj nowe zdarzenie"
+        update: "Aktualizuj zdarzenie"
