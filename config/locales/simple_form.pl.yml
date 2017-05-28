@@ -63,3 +63,6 @@ pl:
       event:
         create: "Dodaj nowe zdarzenie"
         update: "Aktualizuj zdarzenie"
+      machine:
+        create: "Dodaj nową maszynę"
+        update: "Aktualizuj maszynę"

@@ -11,7 +11,7 @@
   %td
     = event.made_at
   %td.actions
-    = link_to edit_event_path(event),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj pole"  do
+    = link_to edit_event_path(event),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj zdarzenie"  do
       %span.uk-icon-edit.edit
-    = link_to event_path(event), method: :delete, data: { confirm: 'Napewno chcesz usunąć zdarzenie.' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń pole"   do
+    = link_to event_path(event), method: :delete, data: { confirm: 'Napewno chcesz usunąć zdarzenie.' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń zdarzenie"   do
       %span.uk-icon-remove.destroy

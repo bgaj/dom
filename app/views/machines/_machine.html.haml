@@ -3,11 +3,12 @@
     = machine.name
   %td
     = machine.description
-    ha
   %td
     = machine.buy
   %td
     = machine.made_at
-  %td
-    = link_to "edytuj", edit_machine_path(machine)
-    = link_to "Usuń", machine_path(machine), method: :delete, data: { confirm: 'Napewno chcesz usunąć maszynę' }
+  %td.actions
+    = link_to edit_machine_path(machine),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj maszynę"  do
+      %span.uk-icon-edit.edit
+    = link_to machine_path(machine), method: :delete, data: { confirm: 'Napewno chcesz usunąć maszynę. ' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń maszynę"   do
+      %span.uk-icon-remove.destroy

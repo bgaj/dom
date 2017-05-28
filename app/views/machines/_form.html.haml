@@ -1,6 +1,10 @@
 = simple_form_for @machine do |f|
-  = f.input :name
-  = f.input :description
-  = f.input :buy
-  = f.input :made_at
-  = f.button :submit, "Zapisz"
+  = f.input :name, label: "Nazwa"
+  = f.input :description, input_html:{"rows" => "5"}, label: "Opis maszyny"
+  %p.form-field-info *Tutaj możesz zamieścić wszystkie informacje związane z maszyną
+  .uk-grid
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :buy, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zakupu"
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :made_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Rok produkcji"
+  = f.button :submit, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

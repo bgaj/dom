@@ -1,8 +1,10 @@
 class MachinesController < ApplicationController
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb "Maszyny", :areas_path
+  before_action :set_breadcrumb_title
 
-  # GET /machines
-  # GET /machines.json
+
+
   def index
     @machines = Machine.all
   end
@@ -14,40 +16,35 @@ class MachinesController < ApplicationController
 
   # GET /machines/new
   def new
+    add_breadcrumb "Nowa"
     @machine = Machine.new
   end
 
   # GET /machines/1/edit
   def edit
+    add_breadcrumb "Edycja"
   end
 
   # POST /machines
   # POST /machines.json
   def create
+    add_breadcrumb "Nowa"
     @machine = Machine.new(machine_params)
-
-    respond_to do |format|
-      if @machine.save
-        format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
-        format.json { render :show, status: :created, location: @machine }
-      else
-        format.html { render :new }
-        format.json { render json: @machine.errors, status: :unprocessable_entity }
-      end
+    if @machine.save
+      redirect_to machines_path, notice: 'Maszyna została dodana.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /machines/1
   # PATCH/PUT /machines/1.json
   def update
-    respond_to do |format|
-      if @machine.update(machine_params)
-        format.html { redirect_to @machine, notice: 'Machine was successfully updated.' }
-        format.json { render :show, status: :ok, location: @machine }
-      else
-        format.html { render :edit }
-        format.json { render json: @machine.errors, status: :unprocessable_entity }
-      end
+    add_breadcrumb "Edycja"
+    if @machine.update(machine_params)
+      redirect_to machines_path, notice: 'Maszyna została zaktualizowana.'
+    else
+      render :edit
     end
   end
 
@@ -56,7 +53,7 @@ class MachinesController < ApplicationController
   def destroy
     @machine.destroy
     respond_to do |format|
-      format.html { redirect_to machines_url, notice: 'Machine was successfully destroyed.' }
+      format.html { redirect_to machines_url, notice: 'Maszyna została usunieta.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +67,9 @@ class MachinesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
       params.require(:machine).permit(:name, :made_at, :description, :buy)
+    end
+
+    def set_breadcrumb_title
+      @breadcrumb_title="Maszyny"
     end
 end

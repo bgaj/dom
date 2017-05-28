@@ -12,8 +12,8 @@
   %td
     = crop.harvest_at
   %td.actions
-    = link_to edit_crop_path(crop),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj pole"  do
+    = link_to edit_crop_path(crop),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj uprawę"  do
       %span.uk-icon-edit.edit
-    = link_to crop_path(crop), method: :delete, data: { confirm: 'Napewno chcesz usunąć pole. Wszystkie zdarzenia dla tego pola zostaną usunięte' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń pole"   do
+    = link_to crop_path(crop), method: :delete, data: { confirm: 'Napewno chcesz usunąć uprawę.' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń uprawę"   do
       %span.uk-icon-remove.destroy
 
