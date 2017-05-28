@@ -1,6 +1,9 @@
 <div class="uk-modal-dialog uk-modal-body" style="width: 80%;height: 80%;min-height: 400px;min-width: 800px;">
   <h4>Zaznacz na mapie działkę (<%= @area.name%>)</h4>
-  <div id="mapp" style="height: 90%">
+  <% if !@area.coordinates.empty? %>
+  <p>Przybliżona powieszchnia zaznaczonego obszaru wyrażona w metrach kwadratowych: <span id="aarea"></span></p>
+  <%end %>
+      <div id="mapp" style="height: 90%">
     <button id="delete-button" class="btn">Delete selected shape</button>
     <button id="save-button" class="btn">Save all</button>
   </div>
@@ -13,7 +16,6 @@
           var lat=0;
           var lng=0;
           <% if !@area.coordinates.empty? %>
-          console.log('test');
           <%- @area.coordinates.each do |cord| %>
           ii++;
           lat += <%= cord.coordinate.split(',')[0].to_f %>
@@ -65,7 +67,13 @@
               fillColor: '#0f0',
               fillOpacity: 0.35
           });
-          myPolygon.setMap(map);
+          myPolygon.setMap(map)
+
+          <% if !@area.coordinates.empty? %>
+              var areaRight = google.maps.geometry.spherical.computeArea(myPolygon.getPath());
+              $('#aarea').html(areaRight);
+          <% end %>
+
 
           var shapes={
               collection:{},
