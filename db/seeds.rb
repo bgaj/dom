@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user = {
     email: 'admin@admin.pl',
-    password: 'admin'
+    password: 'krzyzanow'
 }
 User.create!(user) if User.where(email: 'admin@admin.pl').empty? && Rails.env.development?
 

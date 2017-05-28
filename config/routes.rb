@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :machines, path: '/maszyny'
 
   get 'welcome/index'
-  root 'welcome#index'
+  root 'areas#index'
 
 
 end
