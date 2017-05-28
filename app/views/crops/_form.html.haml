@@ -1,8 +1,16 @@
 = simple_form_for @crop do |f|
-  = f.input :kind, collection: Crop.kinds,value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
-  = f.input :variant
-  = f.association :area
-  = f.input :sown_at
-  = f.input :harvest_at
-  = f.input :crop
-  = f.button :submit, "Zapisz"
+  .uk-grid
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :kind,label: "Rodzaj", collection: Crop.kinds,value_method: Proc.new { |elem| elem[0]}, input_html:{class: 'f-selectize-input'},include_blank: false, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :sown_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zasiewu"
+  = f.input :variant, label: "Odmiana"
+  %p.form-field-info *Tutaj możesz wpisać odmianę
+  = f.association :area , label: "Pola", input_html: {class: 'f-selectize-input' }
+  .uk-grid
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :harvest_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zebrania"
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :crop, label: "Plon"
+      %p.form-field-info *Podaj plon w tonach
+  = f.button :submit,  class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

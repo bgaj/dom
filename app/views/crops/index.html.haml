@@ -1,19 +1,25 @@
-.uk-container-center.uk-container
-  %table.uk-table.uk-table-condensed
-    %thead
-      %tr
-        %td
-          %h4 Rodzaj
-        %td
-          %h4 Pole
-        %td
-          %h4 Zasiane
-        %td
-          %h4 Zebrane
-        %td
-          %h4 Odmiana
-        %td
-          %h4 Plon
-      = render @crops
-  = link_to 'Dodaj nowea akcje', new_crop_path
+= render 'shared/notification'
+.table-content
+  .uk-overflow-container.table-inside
+    %table.uk-table
+      %thead
+        %tr
+          %td
+            %h4 Pole
+          %td
+            %h4 Rodzaj
+          %td
+            %h4 Odmiana
+          %td
+            %h4 Zasiane
+          %td
+            %h4 Plon
+          %td
+            %h4 Zebrane
+          %td
+            %h4 Akcje
+      %tbody
+        = render @crops
+    = link_to 'Dodaj nową uprawę ', new_crop_path, class: 'uk-button uk-button-primary uk-button-large'
+    = link_to 'Dodaj wiele upraw ', new_many_crops_path, class: 'uk-button uk-button-primary uk-button-large'
 

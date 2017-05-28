@@ -1,7 +1,7 @@
 = simple_form_for @event do |f|
   .uk-grid
     .uk-width-medium-1-2.uk-width-1-1
-      = f.input :event, input_html:{class: 'f-selectize-input'}, label: "Rodzaj zdarzenia", collection: Event.events,value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.event.kinds.#{elem[0]}") }, include_blank: false
+      = f.input :event, input_html:{class: 'f-selectize-input'}, label: "Rodzaj zdarzenia", collection: Event.events,value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.event.events.#{elem[0]}") }, include_blank: false
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :made_at , as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zdarzenia"
   = f.input :description, label: "Komentarz"
@@ -10,4 +10,4 @@
   %p.form-field-info *Wybierz pola na których wykonano zdarzenie
   = f.input :cost, label: "Koszty"
   %p.form-field-info *Tutaj możesz podać szacunkowe koszty zdarzenia
-  = f.button :submit, "Zapisz"
+  = f.button :submit,  class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

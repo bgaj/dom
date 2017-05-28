@@ -31,14 +31,14 @@ pl:
     #     age: 'Select your age'
   activerecord:
     attributes:
-      action:
+      event:
         events:
-          orka: "Oranie1"
+          orka: "Oranie"
           oprysk: "Opryskiwanie"
           nawozenie: "Nawożenie"
           uprawa: "Uprawa"
           koszenie: "Koszenie"
-      event:
+      crop:
         kinds:
           pszenica: "Pszenica"
           pszenzyto: "Pszenżyto"

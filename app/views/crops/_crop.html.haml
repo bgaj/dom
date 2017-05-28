@@ -1,13 +1,19 @@
 %tr
   %td
-    = crop.kind
-  %td
     = crop.area.name
   %td
-    = crop.sown_at
-  %td
-    = crop.harvest_at
+    = t("activerecord.attributes.crop.kinds.#{crop.kind}")
   %td
     = crop.variant
   %td
+    = crop.sown_at
+  %td
     = crop.crop
+  %td
+    = crop.harvest_at
+  %td.actions
+    = link_to edit_crop_path(crop),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj pole"  do
+      %span.uk-icon-edit.edit
+    = link_to crop_path(crop), method: :delete, data: { confirm: 'Napewno chcesz usunąć pole. Wszystkie zdarzenia dla tego pola zostaną usunięte' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń pole"   do
+      %span.uk-icon-remove.destroy
+

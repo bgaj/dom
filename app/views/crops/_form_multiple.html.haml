@@ -1,0 +1,11 @@
+= simple_form_for @crop, url: create_many_crops_path do |f|
+  .uk-grid
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :kind,label: "Rodzaj", collection: Crop.kinds.sort ,value_method: Proc.new { |elem| elem[0]}, input_html:{class: 'f-selectize-input'},include_blank: false, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :sown_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zasiewu"
+  = f.input :variant, label: "Odmiana"
+  %p.form-field-info *Tutaj możesz wpisać odmianę
+  = f.input :areas , label: "Pola", collection: Area.all, input_html: { multiple: true, class: 'f-selectize-input' }
+  %p.form-field-info *Można wybrać dowolna ilość pól
+  = f.button :submit, 'Utwórz uprawy',  class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

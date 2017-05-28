@@ -1,6 +1,7 @@
 class Area < ApplicationRecord
   enum status: [:own,:lease]
-  has_many :coordinates
+  has_many :coordinates, dependent: :destroy
+  has_many :crops, dependent: :destroy
   belongs_to :area_class
   has_and_belongs_to_many :events
 
