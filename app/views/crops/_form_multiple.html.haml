@@ -6,6 +6,6 @@
       = f.input :sown_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zasiewu"
   = f.input :variant, label: "Odmiana"
   %p.form-field-info *Tutaj możesz wpisać odmianę
-  = f.input :areas , label: "Pola", collection: Area.all, input_html: { multiple: true, class: 'f-selectize-input' }
+  = f.input :areas , label: "Pola", collection: Area.available, input_html: { multiple: true, class: 'f-selectize-input' }
   %p.form-field-info *Można wybrać dowolna ilość pól
   = f.button :submit, 'Utwórz uprawy',  class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

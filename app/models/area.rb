@@ -9,4 +9,6 @@ class Area < ApplicationRecord
   validates_uniqueness_of :name
   validates :comment, length: { maximum: 255 }
   validates_inclusion_of :area, :in => 0.1..20
+
+  scope :available, -> { all.reject{|a| a.crops.map{|c|  c.harvest_at.blank?}.any?} }
 end

@@ -1,6 +1,6 @@
 = simple_form_for @machine do |f|
   = f.input :name, label: "Nazwa"
-  = f.input :description, input_html:{"rows" => "5"}, label: "Opis maszyny"
+  = f.input :description,as: :text, input_html:{"rows" => "2"}, label: "Opis maszyny"
   %p.form-field-info *Tutaj możesz zamieścić wszystkie informacje związane z maszyną
   .uk-grid
     .uk-width-medium-1-2.uk-width-1-1

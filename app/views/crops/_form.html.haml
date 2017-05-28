@@ -6,7 +6,8 @@
       = f.input :sown_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zasiewu"
   = f.input :variant, label: "Odmiana"
   %p.form-field-info *Tutaj możesz wpisać odmianę
-  = f.association :area , label: "Pola", input_html: {class: 'f-selectize-input' }
+  = f.association :area , label: "Pola",collection: Area.available, input_html: {class: 'f-selectize-input' }
+  %p.form-field-info *Dostępne są tylko te pola, z których zebrano plon. W przypadku braku pola proszę sprawdzić w jego historii czy dla wszystkich upraw podano datę zbioru.
   .uk-grid
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :harvest_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zebrania"

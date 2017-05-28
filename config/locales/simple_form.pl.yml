@@ -66,3 +66,6 @@ pl:
       machine:
         create: "Dodaj nową maszynę"
         update: "Aktualizuj maszynę"
+      crop:
+        create: "Dodaj nową uprawę"
+        update: "Aktualizuj uprawę"

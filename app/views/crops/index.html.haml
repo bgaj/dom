@@ -21,5 +21,5 @@
       %tbody
         = render @crops
     = link_to 'Dodaj nową uprawę ', new_crop_path, class: 'uk-button uk-button-primary uk-button-large'
-    = link_to 'Dodaj wiele upraw ', new_many_crops_path, class: 'uk-button uk-button-primary uk-button-large'
+    = link_to 'Dodaj wiele upraw ', new_many_crops_path, class: 'uk-button uk-button-primary uk-button-large',"data-uk-tooltip" => "{pos:'right'}", title: "Pozwala dodać taką samą uprawę do wielu pól jednocześnie."
 
