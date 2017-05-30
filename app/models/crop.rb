@@ -13,9 +13,11 @@ class Crop < ApplicationRecord
   private
 
     def end_time_grather_then_start_time
-      if self.harvest_at < self.sown_at+1
-        errors.add(:harvest_at, "Data zbioru musi nastąpić później niż data zasiewu")
-      end
+	 if !self.harvest_at.nil? && !self.swon_at.nil?    
+      		if self.harvest_at < self.sown_at+1
+        	errors.add(:harvest_at, "Data zbioru musi nastąpić później niż data zasiewu")
+	      end
+	 end
     end
 
 
