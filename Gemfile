@@ -27,6 +27,8 @@ gem 'selectize-rails', '0.12.4'
 gem 'tinymce-rails', '4.4.3'
 gem 'simple_form'
 gem "breadcrumbs_on_rails"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

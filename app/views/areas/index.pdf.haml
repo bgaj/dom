@@ -1,0 +1,23 @@
+%table.uk-table
+  %thead
+    %tr
+      %td
+        Nazwa
+      %td
+        Powierzchnia
+      %td
+        Ostatnia uprawa
+      %td
+        Data ostatniego zasiewu
+  %tbody
+    - @areas.each do |a|
+      %tr
+        %td
+          = a.name
+        %td
+          = a.area
+          ha
+        %td
+          = a.crops.last.kind if !a.crops.empty?
+        %td
+          = a.crops.last.sown_at if !a.crops.empty?

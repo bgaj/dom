@@ -48,3 +48,30 @@ classes= [
 classes.each do |c|
   AreaClass.find_or_create_by(name: c[:name], order: c[:order])
 end
+
+
+1.upto(11) do |i|
+  name="pole"+i.to_s
+    area_params = {
+        name: name,
+        area: 1,
+        status: 0,
+        area_class_id: 1,
+    }
+    if Area.where(name: area_params[:name]).empty?
+        Area.create!(area_params)
+    end
+end
+
+1.upto(22) do |i|
+    sown_at= (10..20).to_a.sample.years.ago
+    crop_params = {
+        kind: i % 10,
+        sown_at: sown_at,
+        variant: "test",
+        harvest_at: sown_at + 2.days,
+        area_id: Area.order( "RAND()").first.id
+    }
+    Crop.create!(crop_params)
+
+end

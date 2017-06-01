@@ -11,6 +11,13 @@ class AreasController < ApplicationController
   # GET /areas.json
   def index
     @areas = Area.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Pola",
+        layout: 'layouts/pdf.html.erb'
+      end
+    end
   end
 
   # GET /areas/1
