@@ -1,7 +1,7 @@
 = render 'shared/notification'
 .table-content
   .uk-overflow-container.table-inside
-    %table.uk-table
+    %table.uk-table#dataTable{data: {"page-length" => 25}}
       %thead
         %tr
           %td
@@ -16,10 +16,9 @@
             %h4 Plon
           %td
             %h4 Zebrane
-          %td
+          %td{data: {orderable: "false", searchable: "false"}}
             %h4 Akcje
       %tbody
         = render @crops
     = link_to 'Dodaj nową uprawę ', new_crop_path, class: 'uk-button uk-button-primary uk-button-large'
     = link_to 'Dodaj wiele upraw ', new_many_crops_path, class: 'uk-button uk-button-primary uk-button-large',"data-uk-tooltip" => "{pos:'right'}", title: "Pozwala dodać taką samą uprawę do wielu pól jednocześnie."
-

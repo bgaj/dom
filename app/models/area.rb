@@ -1,4 +1,7 @@
 class Area < ApplicationRecord
+
+  include Filterable
+
   enum status: [:own,:lease]
   has_many :coordinates, dependent: :destroy
   has_many :crops, dependent: :destroy
@@ -13,4 +16,5 @@ class Area < ApplicationRecord
 
   scope :available, -> { all.reject{|a| a.crops.map{|c|  c.harvest_at.blank?}.any?} }
   # SELECT areas.* FROM areas WHERE areas.id ORDER BY FIELD (id,(SELECT m1.area_id FROM crops m1 LEFT JOIN crops m2 ON (m1.area_id = m2.area_id AND m1.sown_at < m2.sown_at) WHERE m2.id IS NULL ORDER BY m1.kind))
+  scope :status, -> (status) { where(status: status) }
 end

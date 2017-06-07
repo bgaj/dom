@@ -23,6 +23,8 @@
 //= require uikit/core/modal.js
 //= require jquery_ujs
 //= require selectize
+//= require jquery.dataTables.min.js
+//= require dataTables.uikit.min.js
 
 
 var lastScrollPos = 0;
@@ -62,9 +64,31 @@ var Eengine2017 = {
 $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
-
-
-
+    $('#dataTable').DataTable( {
+        "language": {
+            "processing":     "Przetwarzanie...",
+            "search":         "Szukaj:",
+            "lengthMenu":     "Pokaż _MENU_ pozycji",
+            "info":           "Pozycje od _START_ do _END_ z _TOTAL_ łącznie",
+            "infoEmpty":      "Pozycji 0 z 0 dostępnych",
+            "infoFiltered":   "(filtrowanie spośród _MAX_ dostępnych pozycji)",
+            "infoPostFix":    "",
+            "loadingRecords": "Wczytywanie...",
+            "zeroRecords":    "Nie znaleziono pasujących pozycji",
+            "emptyTable":     "Brak danych",
+            "paginate": {
+                "first":      "Pierwsza",
+                "previous":   "Poprzednia",
+                "next":       "Następna",
+                "last":       "Ostatnia"
+            },
+            "aria": {
+                "sortAscending": ": aktywuj, by posortować kolumnę rosnąco",
+                "sortDescending": ": aktywuj, by posortować kolumnę malejąco"
+            }
+        },
+        "dom": '<"uk-flex uk-flex-wrap uk-flex-space-between uk-margin-bottom"lf>rt<"uk-flex uk-flex-wrap uk-flex-space-between"ip>'
+    } );
 });
 
 

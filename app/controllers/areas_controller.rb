@@ -1,4 +1,5 @@
 class AreasController < ApplicationController
+
   before_action :set_area, only: [:show, :edit, :update, :destroy]
   before_action :set_area_nested, only: [:show_modal, :coords]
   add_breadcrumb "Pola", :areas_path
@@ -10,7 +11,7 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all
+    @areas = Area.filter(filter_params)
     respond_to do |format|
       format.html
       format.pdf do
@@ -94,6 +95,9 @@ class AreasController < ApplicationController
 
     def set_area_nested
       @area = Area.find(params[:area_id])
+    end
+    def filter_params
+      params.slice(:status)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def area_params

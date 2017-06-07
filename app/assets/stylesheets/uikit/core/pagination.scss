@@ -54,7 +54,15 @@ $pagination-disabled-color:                      #999 !default;
  * 2. Center pagination by default
  * 3. Remove whitespace between child elements when using `inline-block`
  */
-
+.uk-pagination>li:first-child>a, .uk-pagination>li:first-child>span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.uk-pagination>li:last-child>a, .uk-pagination>li:last-child>span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
 .uk-pagination {
     /* 1 */
     padding: 0;
@@ -95,7 +103,7 @@ $pagination-disabled-color:                      #999 !default;
     vertical-align: top;
 }
 
-.uk-pagination > li:nth-child(n+2) { margin-left: $pagination-margin-left; }
+//.uk-pagination > li:nth-child(n+2) { margin-left: $pagination-margin-left; }
 
 /*
  * 1. Makes pagination more robust against different box-sizing use
@@ -104,6 +112,9 @@ $pagination-disabled-color:                      #999 !default;
 
 .uk-pagination > li > a,
 .uk-pagination > li > span {
+
+    border: 1px solid #ddd;
+    margin-left: -1px;
     display: inline-block;
     min-width: $pagination-line-height + (2 * $pagination-padding-vertical) - (2 * $pagination-padding-horizontal);
     padding: $pagination-padding-vertical $pagination-padding-horizontal;
@@ -163,8 +174,10 @@ $pagination-disabled-color:                      #999 !default;
  */
 
 .uk-pagination > .uk-disabled > span {
-    background-color: $pagination-disabled-background;
-    color: $pagination-disabled-color;
+    background-color: $pagination-disabled-background !important;
+    color: #777 !important;
+    cursor: not-allowed;
+    border-color: #ddd;
     @include hook-pagination-disabled();
 }
 
@@ -182,7 +195,12 @@ $pagination-disabled-color:                      #999 !default;
 .uk-pagination-left { text-align: left; }
 .uk-pagination-right { text-align: right; }
 
-
+.uk-pagination>li>a:focus, .uk-pagination>li>a:hover, .uk-pagination>li>span:focus, .uk-pagination>li>span:hover {
+  z-index: 2;
+  color: #23527c;
+  background-color: #eee;
+  border-color: #ddd;
+}
 // Hooks
 // ========================================================================
 

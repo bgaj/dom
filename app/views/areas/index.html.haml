@@ -1,9 +1,12 @@
 .table-content
   = render 'areas_map'
 = render 'shared/notification'
+-#%div
+  %label.title{ :for => 'filterIdeas'} Filtruj pomysły wg
+  = select "name", "idea_status_id", idea_statuses(), { selected: idea_sort_and_filter_params }
 .table-content
   .uk-overflow-container.table-inside
-    %table.uk-table
+    %table.uk-table#dataTable{data: {"page-length" => 25}}
       %thead
         %tr
           %th
@@ -14,7 +17,7 @@
             %h4 Klasa
           %th
             %h4 Status
-          %th
+          %th{data: {orderable: "false", searchable: "false"}}
             %h4 akcje
       %tbody
         = render @areas
