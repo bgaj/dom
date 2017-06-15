@@ -1,26 +1,30 @@
 .table-content
   = render 'areas_map'
 = render 'shared/notification'
--#%div
-  %label.title{ :for => 'filterIdeas'} Filtruj pomysły wg
-  = select "name", "idea_status_id", idea_statuses(), { selected: idea_sort_and_filter_params }
-.table-content
-  .uk-overflow-container.table-inside
-    %table.uk-table#dataTable{data: {"page-length" => 25}}
-      %thead
-        %tr
-          %th
-            %h4 Pole
-          %th
-            %h4 Powierzchnia
-          %th
-            %h4 Klasa
-          %th
-            %h4 Status
-          %th{data: {orderable: "false", searchable: "false"}}
-            %h4 akcje
-      %tbody
-        = render @areas
-    = link_to 'Dodaj nowe pole', new_area_path, class: 'uk-button uk-button-primary uk-button-large'
+
+= form_tag(create_with_areas_path, method: :post, id: 'f-form-with-checkboxes') do
+  .table-content
+    .uk-overflow-container.table-inside
+      %table.uk-table#dataTable{data: {"page-length" => 25}}
+        %thead
+          %tr
+            %th.checkbox-column{data: {orderable: "false", searchable: "false"}}
+              = check_box_tag 'check_all', nil, nil, class: 'f-check-all', data:{ form: 'f-form-with-checkboxes' }
+              = label_tag "check_all", ''
+            %th
+              %h4 Pole
+            %th
+              %h4 Powierzchnia
+            %th
+              %h4 Klasa
+            %th
+              %h4 Status
+            %th{data: {orderable: "false", searchable: "false"}}
+              %h4 akcje
+        %tbody
+          = render @areas
+      = link_to 'Dodaj nowe pole', new_area_path, class: 'uk-button uk-button-primary uk-button-large'
+      %button.uk-button.uk-button-success.uk-button-large{type: :submit, formaction: create_with_areas_path} Dodaj uprawy
+      %button.uk-button.uk-button-danger.uk-button-large{type: :submit, formaction: new_with_areas_path} Dodaj zdarzenia
 #area_modal.uk-modal
 = render 'testt'

@@ -23,6 +23,12 @@ class EventsController < ApplicationController
     add_breadcrumb "Nowe"
     @event = Event.new
   end
+
+  def new_with_areas
+    add_breadcrumb "Nowe"
+    @event = Event.new(area_ids: params[:area_ids])
+    render "new"
+  end
   # GET /areas/1/edit
   def edit
     add_breadcrumb "Edycja"

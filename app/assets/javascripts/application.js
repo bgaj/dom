@@ -18,6 +18,7 @@
 //= require uikit/components/tooltip.js
 //= require uikit/components/notify.min
 //= require uikit/components/notify.min
+//= require uikit/core/dropdown.js
 //= require uikit/components/datepicker.js
 //= require uikit/components/form-select.js
 //= require uikit/core/modal.js
@@ -58,13 +59,32 @@ var Eengine2017 = {
         $('.f-selectize-input').selectize({
 
         });
+    },
+    toogle_menu: function () {
+        $('#menu_toggle').on('click', function () {
+           $('.whole-page').toggleClass('close');
+        });
+
+    },
+    changeCheckboxes: function () {
+         var form = $('#'+$('.f-check-all').data('form'));
+        $('.f-check-all').on('change',function () {
+            if ($(this)[0].checked){
+               form.find('.f-to-check').prop('checked', true);
+           }
+           else{
+                form.find('.f-to-check').prop('checked', false);
+            }
+        });
     }
 };
-
 $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
+    Eengine2017.toogle_menu();
+    Eengine2017.changeCheckboxes();
     $('#dataTable').DataTable( {
+        "aaSorting": [],
         "language": {
             "processing":     "Przetwarzanie...",
             "search":         "Szukaj:",

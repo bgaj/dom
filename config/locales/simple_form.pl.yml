@@ -38,6 +38,13 @@ pl:
           nawozenie: "Nawożenie"
           uprawa: "Uprawa"
           koszenie: "Koszenie"
+          talerzowanie: "Talerzowanie"
+          wapnowanie: "Wapnowaine"
+          wlokowanie: "Włókowanie"
+          prasowanie: "Prasowanie"
+          przegrabianie: "Przegrabianie"
+          obronik: "Wywóz obornika"
+          gnojowica: "Wywóz gnojowicy"
       crop:
         kinds:
           pszenica: "Pszenica"

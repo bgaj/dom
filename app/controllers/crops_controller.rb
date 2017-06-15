@@ -24,9 +24,22 @@ class CropsController < ApplicationController
     add_breadcrumb "Nowe"
     @crop = Crop.new
   end
+
   def new_many
     add_breadcrumb "Nowe"
-    @crop = Crop.new
+    if params[:area_ids]
+      @crop = Crop.new(areas: params[:area_ids])
+      @crop.areas.unshift("")
+    else
+      @crop = Crop.new
+    end
+  end
+
+  def create_with_areas
+    add_breadcrumb "Nowe"
+    @crop = Crop.new(areas: params[:area_ids] || [])
+    @crop.areas.unshift("")
+    render 'new_many'
   end
   # GET /areas/1/edit
   def edit
