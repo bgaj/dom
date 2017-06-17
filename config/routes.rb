@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'zdarzenia/nowe_a' => "events#new_with_areas", as: :new_with_areas
 
   resources :machines, path: '/maszyny'
+  resources :throws, path: '/swinie'
+  resources :sales, path: '/sprzedaz'
 
   get 'welcome/index'
   root 'areas#index'

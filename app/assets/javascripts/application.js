@@ -26,6 +26,7 @@
 //= require selectize
 //= require jquery.dataTables.min.js
 //= require dataTables.uikit.min.js
+//= require cocoon
 
 
 var lastScrollPos = 0;
@@ -78,6 +79,8 @@ var Eengine2017 = {
         });
     }
 };
+
+var elem1
 $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
@@ -109,6 +112,13 @@ $(document).ready(function(){
         },
         "dom": '<"uk-flex uk-flex-wrap uk-flex-space-between uk-margin-bottom"lf>rt<"uk-flex uk-flex-wrap uk-flex-space-between"ip>'
     } );
+
+    $('#throws')
+        .on('cocoon:after-insert', function(elem) {
+            elem1 = elem
+            $('#'+elem.currentTarget.getElementsByTagName('select')[0].id).selectize()
+        })
+
 });
 
 

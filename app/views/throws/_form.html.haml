@@ -1,0 +1,18 @@
+= simple_form_for @throw do |f|
+  .uk-grid
+    = f.input :buy_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zakupu"
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :qty, label: "Sztuk"
+  .uk-grid.uk-margin-top-remove
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :buy_cost, label: "Cena"
+      %p.form-field-info *Cena brutto w zł
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :weight, label: "Waga"
+      %p.form-field-info *Całkowita waga
+  = f.button :button, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'
+
+
+
+
+

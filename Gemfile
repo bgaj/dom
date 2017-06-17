@@ -22,6 +22,7 @@ gem 'devise', '4.2.0'
 gem "paperclip", "~> 5.0.0"
 gem "paperclip-compression", '0.3.16'
 gem 'friendly_id', '5.1.0'
+gem "cocoon"
 gem 'autoprefixer-rails', '6.5.3'
 gem 'selectize-rails', '0.12.4'
 gem 'tinymce-rails', '4.4.3'

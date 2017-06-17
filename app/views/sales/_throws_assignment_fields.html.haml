@@ -1,0 +1,7 @@
+.single-throw.nested-fields
+  .uk-grid.uk-margin-top-remove
+    = f.association :throw, collection: Throw.all.order(:number),label_method: :number, value_method: :id,  wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input'}, label: "Rzut"
+    .uk-width-medium-1-2.uk-width-1-1.uk-position-relative
+      = f.input :qty, label: "Sztuk", wrapper_html:{ class: 'uk-margin-top-remove uk-width-8-10'}
+      = link_to_remove_association f, class: 'nested-form-remove-btn' do
+        %span.icon-PA_no

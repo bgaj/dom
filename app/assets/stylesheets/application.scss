@@ -292,6 +292,32 @@ header{
   label{
     display: block;
   }
+  .nested-form-remove-btn{
+    position: absolute;
+    right: 0;
+    top: 20px;
+    font-size: 40px;
+    &:hover{
+      span:before{
+        color: darken(#de6f78, 10%);
+      }
+    }
+  }
+  .nested-title{
+    margin: 20px 0 15px;
+    .nested-elem{
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 28px;
+      span{
+        font-size: 35px;
+        color: green;
+        &:hover{
+          color: lighten(green, 10%);
+        }
+      }
+    }
+  }
   div.input{
     margin-top: 20px;
     input,select,textarea{

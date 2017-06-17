@@ -1,0 +1,29 @@
+= simple_form_for @sale do |f|
+  .uk-grid
+    = f.input :sell_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data sprzedaży"
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :price, label: "Cena"
+      %p.form-field-info *Cena brutto w zł
+  .uk-grid.uk-margin-top-remove
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :weight, label: "Waga"
+      %p.form-field-info *Całkowita waga w kg
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :total, label: "Razem"
+      %p.form-field-info *Łączna kwota brutto w zł
+  -#= f.error :throws_assignment
+  .nested-title
+    %h3.uk-display-inline.nested-elem
+      Rzuty
+    = link_to_add_association f, :throws_assignment, class: 'nested-elem', "data-association-insertion-method" => 'prepend','data-association-insertion-node' => '#throws' do
+      %span.icon-plus_PZU
+  #throws
+    = f.simple_fields_for :throws_assignment do |t|
+      = render 'throws_assignment_fields', f: t
+
+  = f.button :button, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'
+
+
+
+
+

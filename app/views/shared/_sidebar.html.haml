@@ -23,3 +23,15 @@
         %span.icon-tractor.fm-sidebar-icon
         %span.mobile-hide Maszyny
         %span.icon-down_arrow.mobile-hide
+    %li
+      .uk-position-relative{"data-uk-dropdown" => "{mode:'click', pos:'right-top'}"}
+        %a
+          %span.icon-pig.fm-sidebar-icon
+          %span.mobile-hide Świnie
+          %span.icon-down_arrow.mobile-hide
+        %div.uk-dropdown.uk-padding-remove.uk-margin-remove
+          %ul.uk-padding-remove.uk-margin-remove
+            %li
+              = link_to "Rzuty",throws_path
+            %li
+              = link_to "Sprzedaż",sales_path
