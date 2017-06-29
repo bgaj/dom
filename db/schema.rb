@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615151536) do
+ActiveRecord::Schema.define(version: 20170620192952) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -68,6 +68,24 @@ ActiveRecord::Schema.define(version: 20170615151536) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "forage_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "forage_id"
+    t.integer  "kind"
+    t.float    "weight",     limit: 24
+    t.float    "price",      limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["forage_id"], name: "index_forage_elements_on_forage_id", using: :btree
+  end
+
+  create_table "forages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.date    "made_at"
+    t.integer "throw_id"
+    t.string  "type"
+    t.string  "template_name"
+    t.index ["throw_id"], name: "index_forages_on_throw_id", using: :btree
+  end
+
   create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.float    "hours",       limit: 24
@@ -79,12 +97,6 @@ ActiveRecord::Schema.define(version: 20170615151536) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "rounds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "round"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.date     "sell_at"
     t.float    "price",      limit: 24
@@ -92,12 +104,6 @@ ActiveRecord::Schema.define(version: 20170615151536) do
     t.float    "weight",     limit: 24
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-  end
-
-  create_table "seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|

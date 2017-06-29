@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :machines, path: '/maszyny'
   resources :throws, path: '/swinie'
   resources :sales, path: '/sprzedaz'
+  resources :base_forages, path: '/pasze'
 
   get 'welcome/index'
   root 'areas#index'
