@@ -86,11 +86,13 @@ var Eengine2017 = {
     templateLoad: function () {
         $('#template').on('change', function(){
             window.location.href = $(this).val();
+        });
+        $('#template_edit').on('change', function(){
+            window.location.href = $(this).val();
         })
     }
 };
 
-var elem1
 $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
@@ -127,7 +129,14 @@ $(document).ready(function(){
 
     $('#throws')
         .on('cocoon:after-insert', function(elem) {
-            elem1 = elem
+            $('#'+elem.currentTarget.getElementsByTagName('select')[0].id).selectize()
+        })
+    $('#forage_elements')
+        .on('cocoon:after-insert', function(elem) {
+            $('#'+elem.currentTarget.getElementsByTagName('select')[0].id).selectize()
+        })
+    $('#temp_forage_elements')
+        .on('cocoon:after-insert', function(elem) {
             $('#'+elem.currentTarget.getElementsByTagName('select')[0].id).selectize()
         })
 

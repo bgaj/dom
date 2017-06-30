@@ -62,6 +62,18 @@ pl:
         statuses:
           own: "Własne"
           lease: "Dzierżawa"
+      forage_element:
+        kind:
+          pszenica: "Pszenica"
+          pszenzyto: "Pszenżyto"
+          kukurydza: "Kukurydza"
+          owies: "Owies"
+          zyto: "Żyto"
+          lubin: "Łubin"
+          groch: "Groch"
+          rzepak: "Rzepak"
+          soja: "Soja"
+          jeczmien: "Jęczmień"
   helpers:
     submit:
       area:
@@ -76,3 +88,8 @@ pl:
       crop:
         create: "Dodaj nową uprawę"
         update: "Aktualizuj uprawę"
+      template_forage:
+        create: "Dodaj szablon"
+        update: "Aktualizuj szablon"
+      base_forage:
+        create: "Dodaj paszę"

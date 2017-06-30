@@ -8,8 +8,6 @@
       Rzuty
     = link_to base_forages_load_temp_throw_path, class: 'nested-elem', remote: true do
       %span.icon-plus_PZU
-    -#- if @temp_throws.empty?
-      -#%span.error Nie może być puste
   #throws
     - if @temp_throws
       - @temp_throws.each do |temp_throw|

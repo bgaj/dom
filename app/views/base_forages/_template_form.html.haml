@@ -1,4 +1,7 @@
-= simple_form_for @template_forage || TemplateForage.new do |f|
+%label Szablon
+= select_tag "template_edit", options_for_select(TemplateForage.all.collect{ |template| [template.template_name, edit_template_forage_path(template)]}), include_blank: "Wybierz", class: 'f-selectize-input'
+%p.form-field-info *Wybierz szablon do edycji lub usunięcia
+= simple_form_for @template_forage do |f|
   = f.input :template_name, as: :string, label: "Tytuł szablonu"
   .nested-title
     %h3.uk-display-inline.nested-elem
@@ -10,8 +13,6 @@
     = f.simple_fields_for :forage_elements do |t|
       = render 'base_forages/forage_element_fields', f: t
   = f.button :button, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'
-
-
-
-
+  - if @template_forage.id
+    = link_to "Usuń", template_forage_path(@template_forage), method: :delete, data: { confirm: 'Napewno chcesz usunąć zdarzenie.' },class: 'uk-margin-top uk-width-1-1 uk-button button-delete uk-button-large'
 

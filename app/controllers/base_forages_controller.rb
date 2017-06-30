@@ -1,12 +1,21 @@
 class BaseForagesController < ApplicationController
+  add_breadcrumb "Pasze", :new_base_forage_path
+  before_action :set_breadcrumb_title
+
+  def set_breadcrumb_title
+    @breadcrumb_title="Pasze"
+  end
 
   def new
+    add_breadcrumb "Nowa pasza"
     @base_forage = BaseForage.new
     @template_forage = TemplateForage.new
     @temp_throw = TempThrow.new
   end
 
   def create
+    add_breadcrumb "Nowa pasza"
+    @template_forage = TemplateForage.new
     @temp_throws = []
     temp_throws_statuses = []
     if params[:temp_throw]
@@ -28,23 +37,10 @@ class BaseForagesController < ApplicationController
       @temp_throws.each do |throw|
         BaseForageService.save(@base_forage, throw)
       end
-      flash[:success] = "Dodano pasze"
+      flash[:notice] = "Dodano pasze"
       redirect_to new_base_forage_path
     else
       render :new
-    end
-  end
-
-  def edit
-    @base_forage = BaseForage.find(params[:id])
-  end
-
-  def update
-    @base_forage = BaseForage.find(params[:id])
-    if @base_forage.update(base_forage_params)
-      raise
-    else
-      render :edit
     end
   end
 
@@ -53,6 +49,7 @@ class BaseForagesController < ApplicationController
   end
 
   def load_template
+    add_breadcrumb "Nowa pasza"
     template = TemplateForage.find(params[:temp_id])
     @base_forage = BaseForage.new
     template.forage_elements.each do |fe|
@@ -68,4 +65,5 @@ class BaseForagesController < ApplicationController
   def base_forage_params
     params.require(:base_forage).permit(:made_at, forage_elements_attributes: [:id, :kind, :weight, :price, :_destroy])
   end
+
 end

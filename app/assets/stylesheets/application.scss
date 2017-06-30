@@ -91,7 +91,14 @@ html,body {
     }
   }
 }
-
+.button-delete{
+  color: white;
+  background: #de6f78;
+  &:hover{
+    color: white;
+    background: darken(#de6f78, 10%);
+  }
+}
 a:hover{
   color: #E79F39;
 }
