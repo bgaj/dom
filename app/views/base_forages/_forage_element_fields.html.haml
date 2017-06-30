@@ -1,8 +1,8 @@
 .single-throw.nested-fields
   .uk-grid.uk-margin-top-remove
-    = f.input :kind, wrapper_html:{class: 'uk-width-medium-1-3 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input'}, label: "Rodzaj"
-    = f.input :weight, wrapper_html:{class: 'uk-width-medium-1-3 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input'}, label: "Waga"
-    .uk-width-medium-1-3.uk-width-1-1.uk-position-relative
-      = f.input :price, label: "Cena", wrapper_html:{ class: 'uk-margin-top-remove uk-width-8-10'}
+    = f.input :kind, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input'}, label: "Rodzaj"
+    = f.input :weight, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input'}, label: "Waga"
+    .uk-width-medium-4-10.uk-width-1-1.uk-position-relative
+      = f.input :price, label: "Cena", wrapper_html:{ class: 'uk-margin-top-remove uk-width-7-10'}
       = link_to_remove_association f, class: 'nested-form-remove-btn' do
         %span.icon-PA_no

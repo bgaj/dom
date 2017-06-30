@@ -2,6 +2,7 @@ class BaseForagesController < ApplicationController
 
   def new
     @base_forage = BaseForage.new
+    @template_forage = TemplateForage.new
     @temp_throw = TempThrow.new
   end
 
@@ -49,6 +50,17 @@ class BaseForagesController < ApplicationController
 
   def load_temp_throw
     @temp_throw = TempThrow.new
+  end
+
+  def load_template
+    template = TemplateForage.find(params[:temp_id])
+    @base_forage = BaseForage.new
+    template.forage_elements.each do |fe|
+      @base_forage.forage_elements.build(kind: fe.kind, weight: fe.weight, price: fe.price)
+    end
+    @template_forage = TemplateForage.new
+    @temp_throw = TempThrow.new
+    render :new
   end
 
   private

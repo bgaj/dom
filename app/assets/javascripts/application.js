@@ -82,6 +82,11 @@ var Eengine2017 = {
            var target = $(this).data('target');
            $('#temp_throw-'+target).remove();
         });
+    },
+    templateLoad: function () {
+        $('#template').on('change', function(){
+            window.location.href = $(this).val();
+        })
     }
 };
 
@@ -90,6 +95,7 @@ $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
     Eengine2017.toogle_menu();
+    Eengine2017.templateLoad();
     Eengine2017.removeTempThrowForm();
     Eengine2017.changeCheckboxes();
     $('#dataTable').DataTable( {

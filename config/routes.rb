@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   resources :throws, path: '/swinie'
   resources :sales, path: '/sprzedaz'
   resources :base_forages, path: '/pasze', only: [:new, :create]
+  resources :template_forages, path: '/pasze-szablon', only: [:create]
   get '/pasze/load_temp_throw' => 'base_forages#load_temp_throw', as: :base_forages_load_temp_throw
+  get '/pasze/load_template/:temp_id' => 'base_forages#load_template', as: :base_forages_load_template
 
   get 'welcome/index'
   root 'areas#index'

@@ -1,0 +1,17 @@
+= simple_form_for @template_forage || TemplateForage.new do |f|
+  = f.input :template_name, as: :string, label: "Tytuł szablonu"
+  .nested-title
+    %h3.uk-display-inline.nested-elem
+      Składniki
+    = link_to_add_association f, :forage_elements, partial: 'base_forages/forage_element_fields', class: 'nested-elem', "data-association-insertion-method" => 'prepend','data-association-insertion-node' => '#temp_forage_elements' do
+      %span.icon-plus_PZU
+    = f.error :forage_elements
+  #temp_forage_elements
+    = f.simple_fields_for :forage_elements do |t|
+      = render 'base_forages/forage_element_fields', f: t
+  = f.button :button, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'
+
+
+
+
+
