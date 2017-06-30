@@ -57,9 +57,8 @@ var Eengine2017 = {
 
     load: function () {},
     selectizeInit: function(){
-        $('.f-selectize-input').selectize({
-
-        });
+        $('.f-selectize-input').selectize();
+        $('.f-selectize-input').removeClass('f-selectize-input');
     },
     toogle_menu: function () {
         $('#menu_toggle').on('click', function () {
@@ -77,6 +76,12 @@ var Eengine2017 = {
                 form.find('.f-to-check').prop('checked', false);
             }
         });
+    },
+    removeTempThrowForm: function () {
+        $('.f-temp-throw').on('click', function(){
+           var target = $(this).data('target');
+           $('#temp_throw-'+target).remove();
+        });
     }
 };
 
@@ -85,6 +90,7 @@ $(document).ready(function(){
     Eengine2017.ready();
     Eengine2017.selectizeInit();
     Eengine2017.toogle_menu();
+    Eengine2017.removeTempThrowForm();
     Eengine2017.changeCheckboxes();
     $('#dataTable').DataTable( {
         "aaSorting": [],

@@ -1,30 +1,28 @@
 = simple_form_for @base_forage do |f|
-  .uk-grid
-    = f.input :made_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zrobienia"
-    .uk-width-medium-1-2.uk-width-1-1
-      = f.input :throw, label: "Rzut"
-      %p.form-field-info *Cena brutto w zł
-  -#= f.error :throws_assignment
+  = f.input :made_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zrobienia"
+  .nested-title
+    %h3.uk-display-inline.nested-elem
+      Rzuty
+    = link_to base_forages_load_temp_throw_path, class: 'nested-elem', remote: true do
+      %span.icon-plus_PZU
+    - if @temp_throws.empty?
+      %span.error Nie może być puste
+  #throws
+    - if @temp_throws
+      - @temp_throws.each do |temp_throw|
+        = render partial: 'throws_percent_fields', locals: {temp_throw: temp_throw, time: Time.now.usec}
+    - else
+      = render partial: 'throws_percent_fields', locals: {temp_throw: @temp_throw, time: Time.now.usec}
   .nested-title
     %h3.uk-display-inline.nested-elem
       Składniki
     = link_to_add_association f, :forage_elements, class: 'nested-elem', "data-association-insertion-method" => 'prepend','data-association-insertion-node' => '#forage_elements' do
       %span.icon-plus_PZU
+    = f.error :forage_elements
   #forage_elements
     = f.simple_fields_for :forage_elements do |t|
       = render 'forage_element_fields', f: t
-  #throw
-    = simple_fields_for :temp_throw do |c|
-      .single-throw.nested-fields
-        .uk-grid.uk-margin-top-remove
-          = c.input :throw, input_html: { name: 'throws[]'}, collection: Throw.all
-          = c.input :percent, wrapper_html:{class: 'uk-width-medium-1-3 uk-width-1-1 uk-margin-top-remove'}, input_html:{name: 'percent[]'}, label: "Procent"
-  #throw1
-    = simple_fields_for :temp_throw do |c|
-      .single-throw.nested-fields
-        .uk-grid.uk-margin-top-remove
-          = c.input :throw, input_html: { name: 'throws[]'}, collection: Throw.all
-          = c.input :percent, wrapper_html:{class: 'uk-width-medium-1-3 uk-width-1-1 uk-margin-top-remove'}, input_html:{name: 'percent[]'}, label: "Procent"
+  = f.button :button, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'
 
 
 

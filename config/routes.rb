@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   resources :machines, path: '/maszyny'
   resources :throws, path: '/swinie'
   resources :sales, path: '/sprzedaz'
-  resources :base_forages, path: '/pasze'
+  resources :base_forages, path: '/pasze', only: [:new, :create]
+  get '/pasze/load_temp_throw' => 'base_forages#load_temp_throw', as: :base_forages_load_temp_throw
 
   get 'welcome/index'
   root 'areas#index'
