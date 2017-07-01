@@ -9,7 +9,8 @@ class ThrowsController < ApplicationController
   end
 
   def index
-    @throw = Throw.all
+    @throws = Throw.where(close: false).order(buy_at: :desc)
+    @throws_close = Throw.where(close: true).order(buy_at: :desc)
   end
 
   def show

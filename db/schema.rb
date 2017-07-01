@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620192952) do
+ActiveRecord::Schema.define(version: 20170630211608) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -110,13 +110,16 @@ ActiveRecord::Schema.define(version: 20170620192952) do
     t.date     "buy_at"
     t.string   "number"
     t.integer  "qty"
-    t.float    "buy_cost",   limit: 24
-    t.float    "weight",     limit: 24
+    t.float    "buy_cost",         limit: 24
+    t.float    "weight",           limit: 24
     t.integer  "sell_qty"
     t.integer  "drop_qty"
-    t.boolean  "close",                 default: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "close",                       default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.float    "eat_weight",       limit: 24, default: 0.0
+    t.float    "eat_costs",        limit: 24, default: 0.0
+    t.float    "additional_costs", limit: 24, default: 0.0
   end
 
   create_table "throws_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|

@@ -1,0 +1,18 @@
+%tr
+  %td
+    = throw.number
+  %td
+    = throw.buy_at
+  %td
+    = throw.qty
+  %td
+    = throw.buy_cost
+  %td
+    = throw.weight
+  %td.actions
+    = link_to throw_path(throw),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Zobacz rzut"  do
+      %span.icon-PA_statystyki.notice-notify
+    = link_to edit_throw_path(throw),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Edytuj rzut"  do
+      %span.uk-icon-edit.edit
+    = link_to throw_path(throw), method: :delete, data: { confirm: 'Napewno chcesz usunąć rzut.' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń rzut"   do
+      %span.uk-icon-remove.destroy
