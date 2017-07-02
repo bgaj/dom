@@ -9,8 +9,8 @@ class Throw < ApplicationRecord
   validates_presence_of :buy_at, :qty, :buy_cost, :weight
   validates :qty, :numericality=> { :greater_than => 0 }, allow_blank: false
   validates :buy_cost, :numericality => { :greater_than => 0 }, allow_blank: false
-  validates :sell_qty, :numericality=> { :greater_than => 0 }, allow_blank: true
-  validates :drop_qty, :numericality=> { :greater_than => 0 }, allow_blank: true
+  validates :sell_qty, :numericality=> { :greater_than_or_equal_to => 0 }, allow_blank: true
+  validates :drop_qty, :numericality=> { :greater_than_or_equal_to => 0 }, allow_blank: true
   validates :weight, :numericality=> { :greater_than => 0 }, allow_blank: false
   validate :qty_grather_equal_sell
 
@@ -28,7 +28,11 @@ class Throw < ApplicationRecord
   end
 
   def check_close
-    self.close = true if qty.to_i == sell_qty.to_i + drop_qty.to_i
+    if qty.to_i == sell_qty.to_i + drop_qty.to_i
+      self.close = true
+    else
+      self.close = false
+    end
   end
 
 end

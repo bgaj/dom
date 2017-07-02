@@ -1,0 +1,24 @@
+= render 'shared/notification'
+.table-content
+  .uk-overflow-container.table-inside
+    %table.uk-table
+      %thead
+        %tr
+          %td
+            %h4 Faktura
+          %td
+            %h4 Data
+          %td
+            %h4 Cena
+          %td
+            %h4 Waga
+          %td
+            %h4 Kwota
+          %td
+            %h4 Rzuty
+          %td
+            %h4 Akcje
+      %tbody
+        = render @sales
+    = link_to 'Dodaj nową fakturę', new_sale_path, class: 'uk-button uk-button-primary uk-button-large'
+

@@ -64,16 +64,28 @@ pl:
           lease: "Dzierżawa"
       forage_element:
         kind:
-          pszenica: "Pszenica"
-          pszenzyto: "Pszenżyto"
-          kukurydza: "Kukurydza"
-          owies: "Owies"
-          zyto: "Żyto"
-          lubin: "Łubin"
-          groch: "Groch"
-          rzepak: "Rzepak"
-          soja: "Soja"
-          jeczmien: "Jęczmień"
+          one:
+            pszenica: "Pszenica"
+            pszenzyto: "Pszenżyto"
+            kukurydza: "Kukurydza"
+            owies: "Owies"
+            zyto: "Żyto"
+            lubin: "Łubin"
+            groch: "Groch"
+            rzepak: "Rzepak"
+            soja: "Soja"
+            jeczmien: "Jęczmień"
+          other:
+            pszenica: "Pszenica"
+            pszenzyto: "Pszenżyto"
+            kukurydza: "Kukurydza"
+            owies: "Owies"
+            zyto: "Żyto"
+            lubin: "Łubin"
+            groch: "Groch"
+            rzepak: "Rzepak"
+            soja: "Soja"
+            jeczmien: "Jęczmień"
   helpers:
     submit:
       area:

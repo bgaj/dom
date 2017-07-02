@@ -1,0 +1,20 @@
+%tr
+  %td
+    = sale.number
+  %td
+    = sale.sell_at
+  %td
+    = sale.price
+  %td
+    = sale.weight
+  %td
+    = sale.total
+  %td
+    - sale.throws_assignment.each do |ta|
+      %div
+        = link_to ta.throw.number, throw_path(ta.throw), class: 'link-blue'
+  %td.actions
+    = link_to sale_path(sale),"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Zobacz fakturę"  do
+      %span.uk-icon-edit.edit
+    = link_to sale_path(sale), method: :delete, data: { confirm: 'Napewo chcesz usunąć fakturę. ' },"data-uk-tooltip" => "{pos:'bottom-left'}", title: "Usuń fakturę"   do
+      %span.uk-icon-remove.destroy
