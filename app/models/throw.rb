@@ -3,7 +3,7 @@ class Throw < ApplicationRecord
   has_many :sales, through: :throws_assignment
   has_many :base_forages
   has_many :forage_elements, through: :base_forages
-  before_save :create_number
+  before_create :create_number
   before_update :check_close
 
   validates_presence_of :buy_at, :qty, :buy_cost, :weight

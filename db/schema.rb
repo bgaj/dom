@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630211608) do
+ActiveRecord::Schema.define(version: 20170701154142) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170630211608) do
     t.float    "weight",     limit: 24
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "number"
   end
 
   create_table "throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
@@ -120,14 +121,18 @@ ActiveRecord::Schema.define(version: 20170630211608) do
     t.float    "eat_weight",       limit: 24, default: 0.0
     t.float    "eat_costs",        limit: 24, default: 0.0
     t.float    "additional_costs", limit: 24, default: 0.0
+    t.float    "sell_total",       limit: 24, default: 0.0
+    t.float    "weight_total",     limit: 24, default: 0.0
   end
 
   create_table "throws_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "throw_id"
     t.integer  "sale_id"
     t.integer  "qty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.float    "price",      limit: 24, default: 0.0
+    t.float    "weight",     limit: 24, default: 0.0
     t.index ["sale_id"], name: "index_throws_assignments_on_sale_id", using: :btree
     t.index ["throw_id"], name: "index_throws_assignments_on_throw_id", using: :btree
   end

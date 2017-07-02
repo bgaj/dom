@@ -9,4 +9,5 @@ class ForageElement < ApplicationRecord
   validates :weight, :numericality=> { :greater_than => 0 }, allow_blank: false
   validates :price, :numericality => { :greater_than => 0 }, allow_blank: false
 
+
 end

@@ -1,7 +1,7 @@
 class ThrowsController < ApplicationController
 
   before_action :set_throw, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb "Rzut", :throws_path
+  add_breadcrumb "Rzuty", :throws_path
   before_action :set_breadcrumb_title
 
   def set_breadcrumb_title
@@ -14,7 +14,9 @@ class ThrowsController < ApplicationController
   end
 
   def show
-
+    add_breadcrumb @throw.number
+    kinds = @throw.base_forages.joins(:forage_elements).select('distinct forage_elements.kind').map{|c| c.kind}
+    @kinds = ForageElement.kinds.collect{|c| c[0] if kinds.member?(c[1])}.reject{ |c| c.nil?}
   end
 
 

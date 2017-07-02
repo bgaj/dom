@@ -244,41 +244,6 @@ header{
         top: 0px;
       }
     }
-    .actions{
-      a{
-        display: inline-block;
-        margin-left: 5px;
-        margin-bottom: 5px;
-        vertical-align:  middle;
-        span{
-          font-size: 20px;
-          color: white;
-          display: block;
-          width: 20px;
-          text-align: center;
-          padding: 5px;
-          border-radius: 3px;
-        }
-        .special{
-          background: #1ab394;
-          &:hover{
-            background: #18a689;
-          }
-        }
-        .edit{
-          background: #1D8ACB;
-          &:hover{
-            background: darken(#1D8ACB, 10%);
-          }
-        }
-        .destroy{
-          background: #de6f78;
-          &:hover{
-            background: darken(#de6f78, 10%);
-          }
-        }
-      }
-    }
   }
 }
 .notice-notify{
@@ -370,4 +335,68 @@ header{
 }
 .farm-tab{
   margin: 20px 20px -21px 20px;
+}
+.throw-info{
+  .throw-info-title{
+    margin: 0;
+    padding: 10px 0px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    span{
+      width: 150px;
+      display: block;
+      text-align: right;
+    }
+  }
+  .throw-info-item{
+    min-width: 175px;
+    box-sizing: border-box;
+    padding-right: 25px;
+    text-align: right;
+  }
+}
+.link-blue{
+  color: $button-link-color;
+  &:hover{
+    color: $button-link-hover-color;
+  }
+}
+.actions{
+  a{
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    vertical-align:  middle;
+    span{
+      font-size: 20px;
+      color: white;
+      display: block;
+      width: 20px;
+      text-align: center;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .special{
+      background: #1ab394;
+      &:hover{
+        background: #18a689;
+      }
+    }
+    .edit{
+      background: #1D8ACB;
+      &:hover{
+        background: darken(#1D8ACB, 10%);
+      }
+    }
+    .destroy{
+      background: #de6f78;
+      &:hover{
+        background: darken(#de6f78, 10%);
+      }
+    }
+  }
 }

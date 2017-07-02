@@ -16,4 +16,16 @@ class BaseForageService
 
   end
 
+  def self.delete(base_forage)
+    total_cost = 0
+    total_weight = 0
+    throw = base_forage.throw
+    base_forage.forage_elements.each do |fe|
+      total_cost += fe.price
+      total_weight += fe.weight
+    end
+    if base_forage.destroy
+      throw.update_attributes(eat_weight: (base_forage.throw.eat_weight - total_weight), eat_costs: (base_forage.throw.eat_costs - total_cost) )
+    end
+  end
 end

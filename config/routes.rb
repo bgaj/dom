@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :machines, path: '/maszyny'
   resources :throws, path: '/swinie'
-  resources :sales, path: '/sprzedaz'
-  resources :base_forages, path: '/pasze', only: [:new, :create]
+  resources :sales, path: '/sprzedaz', except: [:edit, :update]
+  resources :base_forages, path: '/pasze', only: [:new, :create, :destroy]
   resources :template_forages, path: '/pasze-szablon', only: [:create, :update, :edit, :destroy]
   get '/pasze/load_temp_throw' => 'base_forages#load_temp_throw', as: :base_forages_load_temp_throw
   get '/pasze/load_template/:temp_id' => 'base_forages#load_template', as: :base_forages_load_template

@@ -44,6 +44,15 @@ class BaseForagesController < ApplicationController
     end
   end
 
+  def destroy
+    @base_forage = BaseForage.find(params[:id])
+    @throw = @base_forage.throw
+    if BaseForageService.delete(@base_forage)
+      flash[:notice] = "Wpis został usunięty"
+    end
+    redirect_to throw_path(@throw)
+  end
+
   def load_temp_throw
     @temp_throw = TempThrow.new
   end
