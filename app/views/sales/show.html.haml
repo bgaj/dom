@@ -1,0 +1,67 @@
+= render 'shared/notification'
+.margin-container
+  .form-container.uk-width-1-1
+    %h2
+      %span.uk-icon-money
+      Faktura numer:
+      = @sale.number
+    .uk-grid
+      .uk-width-1-1.uk-width-large-1-2.uk-margin-bottom
+        .throw-info
+          .uk-flex
+            %h3.throw-info-title
+              %span Informacje:
+          .uk-flex
+            .throw-info-item.uk-text-bold
+              Data wystawienia:
+            .throw-info-item-value
+              = @sale.sell_at
+          .uk-flex
+            .throw-info-item.uk-text-bold
+              Cena sprzedaży:
+            .throw-info-item-value
+              = @sale.price
+              zł
+          .uk-flex
+            .throw-info-item.uk-text-bold
+              Waga całkowita:
+            .throw-info-item-value
+              = @sale.weight
+              kg
+          .uk-flex
+            .throw-info-item.uk-text-bold
+              Kwota całkowita:
+            .throw-info-item-value
+              = @sale.total
+              zł
+      .uk-width-1-1.uk-width-large-1-2.uk-margin-bottom
+        .throw-info
+          .uk-flex
+            %h3.throw-info-title.uk-margin-bottom-remove
+              %span Rzuty:
+          .uk-overflow-container
+            %table.uk-table
+              %thead
+                %tr.uk-text-bold
+                  %td Numer
+                  %td Ilość
+                  %td Waga
+                  %td Kwota
+              - @sale.throws_assignment.each do |assignment|
+                %tbody
+                  %tr
+                    %td
+                      =link_to assignment.throw.number, throw_path(assignment.throw), class: 'link-blue'
+                    %td
+                      = assignment.qty
+                      szt.
+                    %td
+                      = assignment.weight
+                      kg
+                    %td
+                      = assignment.price
+                      zł
+
+
+
+

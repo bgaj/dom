@@ -11,6 +11,11 @@ class SalesController < ApplicationController
     @sales = Sale.all.order(number: :desc)
   end
 
+  def show
+    @sale = Sale.find(params[:id])
+    add_breadcrumb @sale.number
+  end
+
   def new
     add_breadcrumb "Nowa faktura"
     @sale = Sale.new
@@ -20,6 +25,8 @@ class SalesController < ApplicationController
     add_breadcrumb "Nowa faktura"
     @sale = Sale.new(sale_params)
     if @sale.save
+      flash[:notice] = "Faktura została dodana"
+      redirect_to sales_path
     else
       render :new
     end

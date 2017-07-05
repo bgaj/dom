@@ -97,6 +97,7 @@
                   %td Ilość
                   %td Cena
                   %td Waga
+                  %td Kwota
               - @throw.throws_assignment.each do |assignment|
                 %tbody
                   %tr
@@ -108,11 +109,14 @@
                       = assignment.qty
                       szt.
                     %td
-                      = assignment.price
+                      = assignment.sale.price
                       zł
                     %td
                       = assignment.weight
                       kg
+                    %td
+                      = assignment.price
+                      zł
     .uk-grid
       .uk-width-1-1
         .throw-info

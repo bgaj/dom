@@ -16,7 +16,7 @@ class ThrowsController < ApplicationController
   def show
     add_breadcrumb @throw.number
     kinds = @throw.base_forages.joins(:forage_elements).select('distinct forage_elements.kind').map{|c| c.kind}
-    @kinds = ForageElement.kinds.collect{|c| c[0] if kinds.member?(c[1])}.reject{ |c| c.nil?}
+    @kinds = ForageElement.kinds.collect{|c| c[0] if kinds.member?(c[1])}.compact
   end
 
 

@@ -4,11 +4,6 @@
     = label_tag "area_id_#{area.id}", ''
   %td
     = area.name
-    - if area.comment
-      .farm-dropdown.uk-position-relative{ 'data-uk-dropdown' => "{mode:'click', pos:'right-top'}"}
-        .icon-komentowane.dropdown-info
-        .uk-dropdown
-          =@areas.first.comment
   %td
     = area.area
     ha

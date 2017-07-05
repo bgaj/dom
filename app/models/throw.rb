@@ -14,6 +14,8 @@ class Throw < ApplicationRecord
   validates :weight, :numericality=> { :greater_than => 0 }, allow_blank: false
   validate :qty_grather_equal_sell
 
+  scope :open, -> { where(close: false) }
+
   private
 
   def create_number
