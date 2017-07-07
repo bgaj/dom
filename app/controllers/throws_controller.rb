@@ -52,9 +52,12 @@ class ThrowsController < ApplicationController
   end
 
   def destroy
-    @throw.destroy
-    respond_to do |format|
-      format.html { redirect_to throws_path, notice: 'Rzut została usunięty' }
+    if @throw.sales.empty?
+      @throw.destroy
+      redirect_to throws_path, notice: 'Rzut została usunięty'
+    else
+      flash[:error] = "Rzut posiada dodane faktury i nie może zostać usunięty"
+      redirect_to throws_path
     end
   end
 

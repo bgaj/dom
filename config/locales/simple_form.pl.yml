@@ -75,6 +75,8 @@ pl:
             rzepak: "Rzepak"
             soja: "Soja"
             jeczmien: "Jęczmień"
+            preemix: "Premix"
+            ryba: "Ryba"
           other:
             pszenica: "Pszenica"
             pszenzyto: "Pszenżyto"
@@ -86,6 +88,8 @@ pl:
             rzepak: "Rzepak"
             soja: "Soja"
             jeczmien: "Jęczmień"
+            premix: "Premix"
+            ryba: "Ryba"
   helpers:
     submit:
       area:

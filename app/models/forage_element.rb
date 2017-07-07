@@ -1,5 +1,5 @@
 class ForageElement < ApplicationRecord
-  enum kind: [ :pszenica, :pszenzyto, :jeczmien, :kukurydza, :lubin, :soja]
+  enum kind: [ :pszenica, :pszenzyto, :jeczmien, :kukurydza, :lubin, :soja, :preemix, :ryba]
 
   belongs_to :base_forage, foreign_key: 'forage_id'
   belongs_to :template_forage, foreign_key: 'forage_id'

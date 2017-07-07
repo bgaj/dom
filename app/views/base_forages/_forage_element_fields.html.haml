@@ -1,6 +1,6 @@
 .single-throw.nested-fields
   .uk-grid.uk-margin-top-remove
-    = f.input :kind, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, collection: ForageElement.kinds, value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.forage_element.kind.#{elem[0]}") }, input_html:{class: 'f-selectize-input'}, label: "Rodzaj"
+    = f.input :kind, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, collection: ForageElement.kinds, value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.forage_element.kind.one.#{elem[0]}") }, input_html:{class: 'f-selectize-input'}, label: "Rodzaj"
     = f.input :weight, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, label: "Waga w kg"
     .uk-width-medium-4-10.uk-width-1-1.uk-position-relative
       = f.input :price, label: "Cena za tonę", wrapper_html:{ class: 'uk-margin-top-remove uk-width-7-10'}

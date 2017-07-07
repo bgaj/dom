@@ -78,7 +78,7 @@ var Eengine2017 = {
         });
     },
     removeTempThrowForm: function () {
-        $('.f-temp-throw').on('click', function(){
+        $(document).on('click','.f-temp-throw', function(){
            var target = $(this).data('target');
            $('#temp_throw-'+target).remove();
         });
