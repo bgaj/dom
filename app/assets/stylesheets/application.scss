@@ -246,6 +246,7 @@ header{
     }
   }
 }
+
 .notice-notify{
   background: #1ab394;
   color:white;
@@ -402,5 +403,33 @@ header{
         background: darken(#de6f78, 10%);
       }
     }
+  }
+}
+
+.form-checkbox{
+  label{
+    padding-left: 30px;
+    &:before{
+      content: "";
+      width: 25px;
+      height: 25px;
+      border: 1px solid #ddd;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  input[type=checkbox]:checked + label:after{
+    color: $default-color-blue;
+    font-family: 'icomoon' !important;
+    content: "\e90f";
+    font-size: 30px;
+    position: absolute;
+    border-radius: 3px;
+    left: -1px;
+    top: 0px;
   }
 }

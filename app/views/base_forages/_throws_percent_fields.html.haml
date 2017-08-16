@@ -1,7 +1,7 @@
 = simple_fields_for temp_throw do |c|
   .single-throw.nested-fields{id: "temp_throw-#{time}"}
     .uk-grid.uk-margin-top-remove
-      = c.input :throw, collection: Throw.open.order(:number),label_method: :number, value_method: :id,  wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input', name: 'temp_throw[][throw]'}, label: "Rzut"
+      = c.input :throw, collection: Throw.open.order(:number),label_method: :number, value_method: :id,  wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1 uk-margin-top-remove'}, input_html:{class: 'f-selectize-input', name: 'temp_throw[][throw]', id: "temp_throw_throw-#{time}"}, label: "Rzut"
       .uk-width-medium-1-2.uk-width-1-1.uk-position-relative
         = c.input :percent, as: :integer, label: "Procent", wrapper_html:{ class: 'uk-margin-top-remove uk-width-8-10'}, input_html: {name: 'temp_throw[][percent]'}
         %a.nested-form-remove-btn.f-temp-throw{data: {target: time}}

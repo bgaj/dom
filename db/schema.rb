@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701154142) do
+ActiveRecord::Schema.define(version: 20170707201112) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -99,12 +99,20 @@ ActiveRecord::Schema.define(version: 20170701154142) do
 
   create_table "sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.date     "sell_at"
-    t.float    "price",      limit: 24
-    t.float    "total",      limit: 24
-    t.float    "weight",     limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.float    "price",       limit: 24
+    t.float    "total",       limit: 24
+    t.float    "weight",      limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "number"
+    t.float    "total_netto", limit: 24
+    t.float    "vat",         limit: 24
+  end
+
+  create_table "throw_additionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.string "name"
+    t.float  "cost",    limit: 24
+    t.string "comment"
   end
 
   create_table "throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|

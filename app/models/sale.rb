@@ -3,10 +3,11 @@ class Sale < ApplicationRecord
   has_many :throws, through: :throws_assignment
   accepts_nested_attributes_for :throws_assignment, allow_destroy: true
 
-  validates_presence_of :throws_assignment
+  attr_accessor :calculate
+
+  validates_presence_of :throws_assignment, :number, :vat, :total, :total_netto, :sell_at, :price, :weight
 
   after_create :update_throws
-  before_create :create_number
 
   private
 
@@ -22,8 +23,12 @@ class Sale < ApplicationRecord
     end
   end
 
-  def create_number
-    self.number = 'Faktura '
-    self.number += (Sale.where(sell_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).count + 1).to_s
+  def self.valid_attribute?(attr, value)
+    mock = self.new(attr => value)
+    if mock.valid?
+      true
+    else
+      !mock.errors.has_key?(attr)
+    end
   end
 end

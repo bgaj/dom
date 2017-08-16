@@ -2,14 +2,28 @@
   .uk-grid
     = f.input :sell_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data sprzedaży"
     .uk-width-medium-1-2.uk-width-1-1
-      = f.input :price, label: "Cena"
-      %p.form-field-info *Cena brutto w zł
+      = f.input :number, label: "Numer"
+      %p.form-field-info *Numer Faktury
   .uk-grid.uk-margin-top-remove
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :weight, label: "Waga"
       %p.form-field-info *Całkowita waga w kg
     .uk-width-medium-1-2.uk-width-1-1
-      = f.input :total, label: "Razem"
+      = f.input :price, label: "Cena netto"
+      %p.form-field-info *Cena netto za kg
+  = f.input :calculate, as: :boolean, label: "Obliczyć automatycznie?",wrapper_html:{class: 'form-checkbox uk-margin-small-bottom'}, boolean_style: :inline, label_html: { class: 'uk-position-relative' }, input_html: { class: 'uk-hidden'}
+  %p.form-field-info
+    Zaznacz aby obliczyć automatycznie kwotę netto, vat i brutto na podstawie wagi oraz ceny za kg.
+  .uk-grid.uk-margin-top-remove
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :total_netto, label: "Netto", required: false
+      %p.form-field-info *Łączna kwota netto w zł
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :vat, label: "VAT", required: false
+      %p.form-field-info *Łączna kwota VAT
+  .uk-grid.uk-margin-top-remove
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :total, label: "Brutto", required: false
       %p.form-field-info *Łączna kwota brutto w zł
   -#= f.error :throws_assignment
   .nested-title

@@ -1,0 +1,104 @@
+%div.uk-align-left.uk-text-left
+  %p.small Sprzedawca:
+  %p.uk-text-bold GAJ PIOTR
+  %p.small Krzyżanów 61
+  %p.small 97-371 Wola Krzysztoporska
+  %p.small NIP: 7711144079
+  %p.small Bank/konto: SGB Bank SA/58 161013192107660058720001
+%div.uk-align-right.uk-text-left
+  %p.small Nabywca:
+  %p.small Okręgowa Spółdzielnia Mleczarska w Radomsku
+  %p.small 97-500 Radomsko, ul.Jagiellońska 4
+  %p.small NIP: 772-010-02-59
+  %p.small tel. 44 7385160
+%div.uk-clearfix.uk-text-right
+  %p ORYGINAŁ/KOPIA
+%div.uk-text-right.uk-margin-top
+  %p.small Miejsce wystawienia: ..............................
+%div.with-border
+  %table.center
+    %tr
+      %td.uk-text-right
+        %strong Faktura VAT nr:
+      %td
+        = @sale.number
+    %tr.small
+      %td.uk-text-right
+        Data wystawienia
+      %td
+        = @sale.sell_at
+%div.small.uk-margin-large-top.uk-margin-large-bottom
+  %p Sposób i termin zapłaty: ....................................................
+%table.small.pdf-table
+  %tr
+    %td
+      Lp.
+    %td
+      Nazwa towaru lub usługi
+    %td
+      PKWiU
+    %td
+      j.m.
+    %td
+      Ilość
+    %td
+      Cena jedn.
+      %br
+      bez podatku
+    %td
+      Wart. towaru bez
+      %br
+      podatku
+    %td.uk-text-center.uk-text-nowrap
+      = "%"
+    %td
+      Kwota VAT
+    %td
+      Wart.towaru z
+      %br
+      podatkiem
+  %tr
+    %td
+      1
+    %td
+      Tucznik
+    %td
+      01.46
+    %td.uk-text-center
+      kg
+    %td.uk-text-right
+      = '%.2f' % @sale.weight
+    %td.uk-text-right
+      = '%.2f' % @sale.price
+    %td.uk-text-right
+      = '%.2f' % @sale.total_netto
+    %td.uk-text-center.uk-text-nowrap
+      8 %
+    %td.uk-text-right
+      = '%.2f' % @sale.vat
+    %td.uk-text-right
+      = '%.2f' % @sale.total
+  %tr.pdf-last
+    %td.no-border{colspan: 6}
+    %td.uk-text-right
+      = '%.2f' % @sale.total_netto
+    %td.uk-text-center.uk-text-nowrap
+      8 %
+    %td.uk-text-right
+      = @sale.vat
+    %td.uk-text-right
+      = '%.2f' % @sale.total
+%div.total
+  %p.big
+    Razem należność:
+    = number_to_currency(@sale.total, precision: 2)
+
+  %p.small
+    Słownie: siedem tysiecy cos cos cos cos
+%div.bottom.small
+  %div.uk-align-left
+    %p= "....................................................................."
+    %p Podpis osoby upoważnionej do wystawienia faktury
+  %div.uk-align-right
+    %p= "....................................................................."
+    %p Podpis osoby upoważnionej do odbioru faktury

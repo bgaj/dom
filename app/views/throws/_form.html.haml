@@ -1,6 +1,6 @@
 = simple_form_for @throw do |f|
   .uk-grid
-    = f.input :buy_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zakupu"
+    = f.input :buy_at, as: :string, wrapper_html:{class: 'uk-width-medium-1-2 uk-width-1-1'}, input_html:{type: "date",  "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zakupu"
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :qty, label: "Sztuk"
   .uk-grid.uk-margin-top-remove

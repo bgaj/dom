@@ -1,1 +1,44 @@
 @import "application";
+body,p,h1,h2,h3,h4,h5,h6{
+  margin: 0px;
+  padding: 0px;
+}
+.small{
+  font-size: 11px;
+}
+.with-border{
+  margin-top: 5px;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  padding: 25px 0;
+}
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+.pdf-table{
+  width: 100%;
+  border-collapse: collapse;
+  td{
+    padding: 5px;
+    border: 1px solid #aaa;
+  }
+  .no-border{
+    border: none !important;
+  }
+  .pdf-last{
+    font-weight: bold;
+  }
+}
+.total{
+  margin-top: 50px;
+  .big{
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+.bottom{
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+}

@@ -11,7 +11,7 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.filter(filter_params)
+    @areas = Area.filter(filter_params).order(id: :desc)
     respond_to do |format|
       format.html
       format.pdf do
