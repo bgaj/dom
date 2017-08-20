@@ -5,6 +5,10 @@
 = form_tag(create_with_areas_path, method: :post, id: 'f-form-with-checkboxes') do
   .table-content
     .uk-overflow-container.table-inside
+      %h3
+        Razem:
+        = @total.round(2)
+        ha
       %table.uk-table#dataTable{data: {"page-length" => 25}}
         %thead
           %tr

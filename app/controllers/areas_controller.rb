@@ -12,6 +12,7 @@ class AreasController < ApplicationController
   # GET /areas.json
   def index
     @areas = Area.filter(filter_params).order(id: :desc)
+    @total = Area.all.sum(:area)
     respond_to do |format|
       format.html
       format.pdf do
