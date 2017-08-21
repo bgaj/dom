@@ -5,10 +5,11 @@ class Crop < ApplicationRecord
   enum kind: [ :pszenica, :kukurydza, :jeczmien, :zyto, :pszenzyto, :ziemniaki, :trawa, :rzepak, :groch, :lubin, :owies]
 
   belongs_to :area
+  belongs_to :variant
 
   validates_presence_of :variant, :sown_at, :kind, :area
   validate :end_time_grather_then_start_time
-  validate :sown_at_after_harvest, on: :create
+  # validate :sown_at_after_harvest, on: :create
 
   private
 

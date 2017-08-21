@@ -1,0 +1,1 @@
+= select_tag "crop[variant_id]", options_from_collection_for_select((@variants || Variant.where(kind: @crop.kind || :pszenica)), "id", "name" , @crop.variant_id), class: 'f-variant-selectize-input variant-input', data: {url: crops_create_variant_path}, include_blank: true

@@ -95,6 +95,21 @@ class CropsController < ApplicationController
     end
   end
 
+  def add_variant
+    @variant = Variant.find_or_create_by(kind: params[:kind], name: params[:name])
+    respond_to do |format|
+      format.json { render json: @variant.to_json }
+    end
+  end
+
+  def load_variant
+    @crop = Crop.new
+    @variants = Variant.where(kind: params[:kind])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between crops.
   def set_crop
@@ -103,6 +118,6 @@ class CropsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def crop_params
-    params.require(:crop).permit(:kind, :sown_at, :harvest_at, :crop, :variant, :area_id)
+    params.require(:crop).permit(:kind, :sown_at, :harvest_at, :crop, :variant_id, :area_id)
   end
 end
