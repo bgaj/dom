@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'uprawy/wiele' => "crops#new_many", as: :new_many_crops
   post 'uprawy/wiele' => "crops#create_many", as: :create_many_crops
   post 'uprawy/wiele_a' => "crops#create_with_areas", as: :create_with_areas
+  post 'uprawy/add_variant' => "crops#add_variant", as: :crops_create_variant
+  post 'uprawy/load_variant' => "crops#load_variant", as: :crops_load_variant
   resources :crops, path: '/uprawy'
 
   resources :areas, path: '/pola'  do

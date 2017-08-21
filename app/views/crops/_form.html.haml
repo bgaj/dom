@@ -1,11 +1,15 @@
 = simple_form_for @crop do |f|
   .uk-grid
     .uk-width-medium-1-2.uk-width-1-1
-      = f.input :kind,label: "Rodzaj", collection: Crop.kinds,value_method: Proc.new { |elem| elem[0]}, input_html:{class: 'f-selectize-input'},include_blank: false, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
+      = f.input :kind,label: "Rodzaj", collection: Crop.kinds,value_method: Proc.new { |elem| elem[0]}, input_html:{class: 'f-selectize-input', data: {url: crops_load_variant_path}},include_blank: false, label_method: Proc.new { |elem| t("activerecord.attributes.crop.kinds.#{elem[0]}") }
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :sown_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zasiewu"
-  = f.input :variant, label: "Odmiana"
-  %p.form-field-info *Tutaj możesz wpisać odmianę
+  .input
+    = f.label :variant, "Odmiana"
+    .variant-input
+      = render partial: 'variant'
+    = f.error :variant
+  %p.form-field-info *Tutaj możesz wpisać odmianę. W celu dodania nowej odmiany, proszę wpisać jej nazwę, a następnie wcisnąć 'Add'. Odmiana zostanie dodana dla wybranego rodzaju zasiewu.
   = f.association :area , label: "Pola",collection: @crop.area.nil? ? Area.available : Area.available.push(@crop.area).uniq, input_html: {class: 'f-selectize-input' }
   %p.form-field-info *Dostępne są tylko te pola, z których zebrano plon. W przypadku braku pola proszę sprawdzić w jego historii czy dla wszystkich upraw podano datę zbioru.
   .uk-grid

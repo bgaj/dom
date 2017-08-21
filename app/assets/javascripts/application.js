@@ -66,6 +66,37 @@ var Eengine2017 = {
         });
 
     },
+    variantSelectize: function() {
+        $selectize = $('.f-variant-selectize-input').selectize({
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            maxItems: 1,
+            create: function(input, callback) {
+                var url = $(this)[0].$input.data('url');
+                var kind = $('#crop_kind').val();
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {'name' : input, kind: kind},
+                    success: function(res) {
+                        callback({ id: res.id, name: input });
+                    }
+                });
+            }
+        });
+    },
+    variantKindLoad: function(){
+        $('#crop_kind').on('change', function () {
+            var kind = $(this).val();
+            var url = $(this).data('url');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: { kind: kind},
+            });
+        });
+    },
     changeCheckboxes: function () {
          var form = $('#'+$('.f-check-all').data('form'));
         $('.f-check-all').on('change',function () {
@@ -100,6 +131,8 @@ $(document).ready(function(){
     Eengine2017.templateLoad();
     Eengine2017.removeTempThrowForm();
     Eengine2017.changeCheckboxes();
+    Eengine2017.variantSelectize();
+    Eengine2017.variantKindLoad();
     $('#dataTable').DataTable( {
         "aaSorting": [],
         "language": {

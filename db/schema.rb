@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707201112) do
+ActiveRecord::Schema.define(version: 20170820102728) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -50,12 +50,13 @@ ActiveRecord::Schema.define(version: 20170707201112) do
     t.integer  "kind"
     t.date     "sown_at"
     t.date     "harvest_at"
-    t.string   "variant"
     t.float    "crop",       limit: 24
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "area_id"
+    t.integer  "variant_id"
     t.index ["area_id"], name: "index_crops_on_area_id", using: :btree
+    t.index ["variant_id"], name: "index_crops_on_variant_id", using: :btree
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -160,6 +161,11 @@ ActiveRecord::Schema.define(version: 20170707201112) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "variants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer "kind"
+    t.string  "name"
   end
 
 end
