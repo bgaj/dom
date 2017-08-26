@@ -5,9 +5,10 @@
     = event.description
   %td
     - if !event.areas.empty?
-      %ul
+      %ul.event-area-list
         -event.areas.each do |area|
-          =link_to area.name, area_path(area)
+          %li
+            =link_to area.name, area_path(area)
   %td
     = event.made_at
   %td.actions

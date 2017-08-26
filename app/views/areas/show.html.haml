@@ -1,0 +1,49 @@
+.margin-container
+  .form-container.uk-width-1-1
+    %h2
+      %span.icon-ear-of-wheat
+      Pole:
+      = @area.name
+  - prev_crop = nil
+  - @area.crops.each_with_index do |crop, index|
+    - if index == 0
+      - @area.events.where('made_at < ?', crop.sown_at).each do |event|
+        %strong Eventy
+        %ul
+          %li= event.event
+          %li= event.id
+    - elsif prev_crop
+      - @area.events.where('made_at < ? AND made_at > ?', crop.sown_at, prev_crop.harvest_at).each do |event|
+        %strong Eventy
+        %ul
+          %li= event.event
+          %li= event.id
+    Uprawa:
+    %ul
+      %li
+        = crop.kind
+      %li
+        = crop.variant.name
+      %li
+        = crop.sown_at
+    - @area.events.where('made_at >= ? AND made_at <= ?', crop.sown_at, crop.harvest_at || Date.today).each do |event|
+      %strong Eventy
+      %ul
+        %li= event.event
+        %li= event.id
+    Zbiór:
+    %ul
+      %li
+      = crop.harvest_at
+      %li
+        = crop.crop
+    - if crop == @area.crops.last
+      - @area.events.where('made_at > ? ', crop.harvest_at || Date.today).each do |event|
+        %strong Eventy
+        %ul
+          %li= event.event
+          %li= event.id
+    - prev_crop = crop
+
+
+

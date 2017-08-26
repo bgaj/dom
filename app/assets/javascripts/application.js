@@ -173,7 +173,25 @@ $(document).ready(function(){
             $('#'+elem.currentTarget.getElementsByTagName('select')[0].id).selectize()
         })
 
-});
+
+    $(document).on('click', '.f-to-check', function(){
+        id = $(this).val();
+        input = $('#area_id_'+id);
+        try {
+            if(input[0].checked){
+                window[('myPolygon_'+id)].setOptions({fillColor: "#f00"});
+            }
+            else {
+                window[('myPolygon_'+id)].setOptions({fillColor: "#0f0"});
+            }
+        } catch(err) {
+        }
+
+
+
+        });
+    });
+
 
 
 $(window).load(function() {

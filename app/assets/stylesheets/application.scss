@@ -433,3 +433,21 @@ header{
     top: 0px;
   }
 }
+.event-area-list{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li{
+    display: inline-block;
+    margin-bottom: 5px;
+    a{
+      color: $default-color-blue;
+      padding-right: 5px;
+      border-right: 1px solid;
+      margin-right: 5px;
+      &:hover{
+        color: $button-success-hover-background;
+      }
+    }
+  }
+}

@@ -42,17 +42,30 @@
           var infoWindow = new google.maps.InfoWindow();
 
           google.maps.event.addListener(myPolygon_<%= area.id%>, 'click', function(event) {
-              infoWindow.close(map);
-              infoWindow.setContent("Pole: <%= area.name%> <br> Powierzchnia: <%= area.area %> ha <br> <a href='<%= area_path(area) %>'>Zobacz</a>");
-              infoWindow.setPosition(new google.maps.LatLng(event.latLng.lat(),event.latLng.lng()));
-              infoWindow.open(map);
+
+              if($('#area_id_'+<%= area.id%>)[0].checked){
+                  $('#area_id_'+<%= area.id%>).prop('checked', false);
+                  this.setOptions({fillColor: "#00FF00"});
+              }
+              else{
+                  $('#area_id_'+<%= area.id%>).prop('checked', true);
+                  this.setOptions({fillColor: "#FF0000"});
+              }
+
           });
 
-          google.maps.event.addListener(myPolygon_<%= area.id%>,"mouseover",function() {
-              this.setOptions({fillColor: "#FF0000"});
+          google.maps.event.addListener(myPolygon_<%= area.id%>,"mouseover",function(event) {
+              if(infoWindow.getMap() == null || infoWindow.getMap() == "undefined"){
+                  infoWindow.setContent("Pole: <%= area.name%> <br> Powierzchnia: <%= area.area %> ha <br> <a href='<%= area_path(area) %>'>Zobacz</a>");
+                  infoWindow.setPosition(new google.maps.LatLng(event.latLng.lat(),event.latLng.lng()));
+                  infoWindow.open(map);
+              }
           });
-          google.maps.event.addListener(myPolygon_<%= area.id%>,"mouseout",function() {
-              this.setOptions({fillColor: "#00FF00"});
+
+          google.maps.event.addListener(map, 'mousemove', function (event) {
+              if(!google.maps.geometry.poly.containsLocation(event.latLng, myPolygon_<%= area.id%>)){
+                  infoWindow.close(map);
+              }
           });
 
           <% end %>

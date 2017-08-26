@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @events = Event.all
+    @events = Event.all.order(made_at: :desc)
   end
 
   # GET /areas/1
