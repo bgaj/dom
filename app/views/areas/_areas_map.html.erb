@@ -43,12 +43,12 @@
 
           google.maps.event.addListener(myPolygon_<%= area.id%>, 'click', function(event) {
 
-              if($('#area_id_'+<%= area.id%>)[0].checked){
-                  $('#area_id_'+<%= area.id%>).prop('checked', false);
+              if($('#area_id_<%= area.id%>')[0].checked){
+                  $('#area_id_<%= area.id%>').prop('checked', false);
                   this.setOptions({fillColor: "#00FF00"});
               }
               else{
-                  $('#area_id_'+<%= area.id%>).prop('checked', true);
+                  $('#area_id_<%= area.id%>').prop('checked', true);
                   this.setOptions({fillColor: "#FF0000"});
               }
 
