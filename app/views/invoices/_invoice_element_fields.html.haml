@@ -1,0 +1,8 @@
+.single-throw.nested-fields
+  .uk-grid.uk-margin-top-remove
+    = f.input :vat_kind, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, collection: InvoiceElement.vat_kinds, value_method: Proc.new { |elem| elem[0]}, label_method: Proc.new { |elem| t("activerecord.attributes.invoice_element.vat_kind.#{elem[0]}") }, input_html:{class: 'f-selectize-input'}, label: "VAT"
+    = f.input :netto, wrapper_html:{class: 'uk-width-medium-3-10 uk-width-1-1 uk-margin-top-remove'}, label: "Netto"
+    .uk-width-medium-4-10.uk-width-1-1.uk-position-relative
+      = f.input :vat, label: "Kwota VAT", wrapper_html:{ class: 'uk-margin-top-remove uk-width-7-10'}
+      = link_to_remove_association f, class: 'nested-form-remove-btn' do
+        %span.icon-PA_no

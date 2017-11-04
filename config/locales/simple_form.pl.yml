@@ -62,6 +62,11 @@ pl:
         statuses:
           own: "Własne"
           lease: "Dzierżawa"
+      invoice_element:
+        vat_kind:
+          vat_5: "VAT 5%"
+          vat_8: "VAT 8%"
+          vat_23: "VAT 23%"
       forage_element:
         kind:
           one:
