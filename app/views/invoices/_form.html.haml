@@ -1,0 +1,20 @@
+= simple_form_for @invoice do |f|
+  .uk-grid.uk-margin-remove
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :made_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data wystawienia"
+    .uk-width-medium-1-2.uk-width-1-1
+      = f.input :recived_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data odebrania"
+  .uk-grid.uk-margin-remove
+    .uk-width-1-1.uk-width-medium-1-2
+      = f.input :number, label: "Numer Faktury"
+    .uk-width-1-1.uk-width-medium-1-2
+      = f.input :pay_date, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Termin płatności"
+  %h3.uk-display-inline.nested-elem
+    Elementy
+    = link_to_add_association f, :invoice_elements, partial: 'invoices/invoice_element_fields', class: 'nested-elem', "data-association-insertion-method" => 'prepend','data-association-insertion-node' => '#invoice_elements' do
+      %span.icon-plus_PZU
+    = f.error :invoice_elements
+  #invoice_elements
+    = f.simple_fields_for :invoice_elements do |t|
+      = render 'invoices/invoice_element_fields', f: t
+  = f.button :submit, class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

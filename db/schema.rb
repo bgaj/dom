@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820102728) do
+ActiveRecord::Schema.define(version: 20171011210623) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -85,6 +85,46 @@ ActiveRecord::Schema.define(version: 20170820102728) do
     t.string  "type"
     t.string  "template_name"
     t.index ["throw_id"], name: "index_forages_on_throw_id", using: :btree
+  end
+
+  create_table "invoice_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "vat_kind"
+    t.integer  "invoice_id"
+    t.float    "netto",      limit: 24
+    t.float    "vat",        limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["invoice_id"], name: "index_invoice_elements_on_invoice_id", using: :btree
+  end
+
+  create_table "invoice_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.string   "account_number"
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "list_number"
+    t.string   "number"
+    t.date     "made_at"
+    t.date     "recived_at"
+    t.string   "nip"
+    t.string   "account_number"
+    t.string   "name"
+    t.string   "city"
+    t.string   "post"
+    t.integer  "pay_time"
+    t.date     "pay_date"
+    t.float    "price",             limit: 24
+    t.boolean  "status",                       default: false
+    t.integer  "kind"
+    t.string   "scan_file_name"
+    t.string   "scan_content_type"
+    t.integer  "scan_file_size"
+    t.datetime "scan_updated_at"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
