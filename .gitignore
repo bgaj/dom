@@ -20,7 +20,10 @@
 /public/assets
 /config/secrets.yml
 /.idea
+.gems/
 .env
+.ruby-version
+hosts
 docker-compose.yml
 Dockerfile
 /config/database.yml
