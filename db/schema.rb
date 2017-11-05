@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011210623) do
+ActiveRecord::Schema.define(version: 20171104142247) do
 
   create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -136,6 +136,17 @@ ActiveRecord::Schema.define(version: 20171011210623) do
     t.string   "description"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.text     "message",           limit: 65535
+    t.datetime "last_notification"
+    t.date     "dead_line"
+    t.boolean  "finished",                        default: false
+    t.integer  "notificaable_id"
+    t.string   "notificaable_type"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|

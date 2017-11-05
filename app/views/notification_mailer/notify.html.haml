@@ -1,0 +1,11 @@
+%p Przypominamy o wydarzeniu:
+%p =@message
+%p Termin upływa
+  - if @time > 1
+    za
+    %bold=@time
+    dni
+  - elsif @time == 1
+    %bold jutro
+  - else
+    %bold dzisiaj

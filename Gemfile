@@ -32,13 +32,15 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'kaminari'
 gem 'twilio-ruby', '~> 5.3.1'
-
+gem 'whenever', :require => false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'letter_opener', '1.4.1'
+  gem 'letter_opener_web', '1.3.1'
   gem 'web-console', '3.4.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring', '2.0.0'

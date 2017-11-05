@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: { sessions: 'sessions' }
   get 'uprawy/wiele' => "crops#new_many", as: :new_many_crops
   post 'uprawy/wiele' => "crops#create_many", as: :create_many_crops
