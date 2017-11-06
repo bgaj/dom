@@ -5,7 +5,6 @@ class SmsService
 # put your own credentials here
   SID = ENV["SID"]
   AT = ENV["AT"]
-  
 
 # set up a client to talk to the Twilio REST API
 
