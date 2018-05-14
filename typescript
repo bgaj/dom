@@ -1,0 +1,9 @@
+Script started on Wed Nov  1 19:51:23 2017
+# $:
+sh: 1: $:: not found
+# ^[[A    ^[[A^[[A        $
+sh: 2: $: not found
+# ^C
+# 
+
+Script done on Wed Nov  1 19:51:49 2017
