@@ -12,7 +12,7 @@ require 'mina/git'
 set :application_name, 'Gospodarstwo'
 set :user, 'manys81'
 set :domain, 'panel14.mydevil.net'
-set :deploy_to, '/home/manys81/domains/manys81.usermd.net/public_ruby'
+set :deploy_to, '/home/manys81/domains/manys81.usermd.net'
 set :repository, 'git@github.com:bgaj/dom.git'
 set :branch, 'master'
 
