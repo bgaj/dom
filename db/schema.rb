@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104142247) do
+ActiveRecord::Schema.define(version: 20180523115012) do
 
-  create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "area_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
     t.integer  "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
     t.float    "area",           limit: 24
     t.datetime "created_at",                null: false
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["area_class_id"], name: "index_areas_on_area_class_id", using: :btree
   end
 
-  create_table "areas_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "areas_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer "event_id"
     t.integer "area_id"
     t.index ["area_id"], name: "index_areas_events_on_area_id", using: :btree
     t.index ["event_id"], name: "index_areas_events_on_event_id", using: :btree
   end
 
-  create_table "coordinates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "coordinates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "coordinate"
     t.integer  "area_id"
     t.datetime "created_at", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["area_id"], name: "index_coordinates_on_area_id", using: :btree
   end
 
-  create_table "crops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "crops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "kind"
     t.date     "sown_at"
     t.date     "harvest_at"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["variant_id"], name: "index_crops_on_variant_id", using: :btree
   end
 
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "event"
     t.date     "made_at"
     t.text     "description", limit: 65535
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "forage_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "forage_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "forage_id"
     t.integer  "kind"
     t.float    "weight",     limit: 24
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["forage_id"], name: "index_forage_elements_on_forage_id", using: :btree
   end
 
-  create_table "forages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "forages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.date    "made_at"
     t.integer "throw_id"
     t.string  "type"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["throw_id"], name: "index_forages_on_throw_id", using: :btree
   end
 
-  create_table "invoice_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "invoice_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "vat_kind"
     t.integer  "invoice_id"
     t.float    "netto",      limit: 24
@@ -97,14 +97,14 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["invoice_id"], name: "index_invoice_elements_on_invoice_id", using: :btree
   end
 
-  create_table "invoice_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "invoice_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "account_number"
     t.string   "name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  create_table "invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "list_number"
     t.string   "number"
     t.date     "made_at"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.datetime "updated_at",                                   null: false
   end
 
-  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
     t.float    "hours",       limit: 24
     t.date     "buy"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.text     "message",           limit: 65535
     t.datetime "last_notification"
     t.date     "dead_line"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.datetime "updated_at",                                      null: false
   end
 
-  create_table "sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.date     "sell_at"
     t.float    "price",       limit: 24
     t.float    "total",       limit: 24
@@ -161,13 +161,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.float    "vat",         limit: 24
   end
 
-  create_table "throw_additionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
-    t.string "name"
-    t.float  "cost",    limit: 24
-    t.string "comment"
-  end
-
-  create_table "throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.date     "buy_at"
     t.string   "number"
     t.integer  "qty"
@@ -185,7 +179,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.float    "weight_total",     limit: 24, default: 0.0
   end
 
-  create_table "throws_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "throws_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer  "throw_id"
     t.integer  "sale_id"
     t.integer  "qty"
@@ -197,7 +191,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["throw_id"], name: "index_throws_assignments_on_throw_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -214,7 +208,7 @@ ActiveRecord::Schema.define(version: 20171104142247) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "variants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+  create_table "variants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer "kind"
     t.string  "name"
   end

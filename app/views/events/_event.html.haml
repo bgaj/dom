@@ -5,10 +5,13 @@
     = event.description
   %td
     - if !event.areas.empty?
-      %ul.event-area-list
-        -event.areas.each do |area|
-          %li
-            =link_to area.name, area_path(area)
+      .uk-position-relative{"data-uk-dropdown"=>"{mode:'click'}"}
+        %div Pokaż pola
+        .uk-dropdown
+          %ul.event-area-list
+            -event.areas.each do |area|
+              %li
+                =link_to area.name, area_path(area)
   %td
     = event.made_at
   %td.actions
