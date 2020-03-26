@@ -11,7 +11,7 @@
 /log/*
 /tmp/*
 !/log/.keep
-!/tmp/.keep
+!/tmp/.keepK
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -24,8 +24,6 @@
 .env
 .ruby-version
 hosts
-docker-compose.yml
-Dockerfile
 /config/database.yml
 /public/packs
 /public/packs-test
