@@ -6,26 +6,26 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.18', '< 0.5'
-gem 'puma', '~> 3.0'
+gem 'mysql2', '>= 0.3.18', '< 0.6.0'
+gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'haml'
-gem 'cancancan', '1.15.0'
-gem 'devise', '4.2.0'
-gem "paperclip", "~> 5.0.0"
-gem "paperclip-compression", '0.3.16'
-gem 'friendly_id', '5.1.0'
+gem 'cancancan'
+gem 'devise'
+gem "paperclip"
+gem "paperclip-compression"
+gem 'friendly_id'
 gem "cocoon"
-gem 'autoprefixer-rails', '6.5.3'
-gem 'selectize-rails', '0.12.4'
-gem 'tinymce-rails', '4.4.3'
+gem 'autoprefixer-rails'
+gem 'selectize-rails'
+gem 'tinymce-rails'
 gem 'simple_form'
 gem "breadcrumbs_on_rails"
 gem 'wicked_pdf'
