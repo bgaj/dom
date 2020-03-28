@@ -1,17 +1,5 @@
-FROM ruby:2.3
-MAINTAINER bartosz.gaj@eengnie.pl
-
-#ENV RAILS_ENV production
-#ENV RACK_ENV production
-
-
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install -y nodejs
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update \
-    && apt-get install -y yarn
+FROM starefossen/ruby-node
+MAINTAINER bartosz.gaj@eengine.pl
 
 RUN apt-get update && apt-get install -y \
 build-essential \
@@ -19,7 +7,17 @@ nodejs \
 imagemagick \
 cron \
 optipng \
-libjpeg-progs
+libjpeg-progs \
+ffmpeg
+RUN apt-get -y remove exim4 exim4-base exim4-config exim4-daemon-light
 
 WORKDIR /gospodarstwo
 
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+ENV BUNDLE_PATH=/bundle \
+   BUNDLE_BIN=/bundle/bin \
+   GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
