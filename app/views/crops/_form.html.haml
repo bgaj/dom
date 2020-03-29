@@ -12,10 +12,12 @@
   %p.form-field-info *Tutaj możesz wpisać odmianę. W celu dodania nowej odmiany, proszę wpisać jej nazwę, a następnie wcisnąć 'Add'. Odmiana zostanie dodana dla wybranego rodzaju zasiewu.
   = f.association :area , label: "Pola",collection: @crop.area.nil? ? Area.available : Area.available.push(@crop.area).uniq, input_html: {class: 'f-selectize-input' }
   %p.form-field-info *Dostępne są tylko te pola, z których zebrano plon. W przypadku braku pola proszę sprawdzić w jego historii czy dla wszystkich upraw podano datę zbioru.
+  = f.input :description, label: "Komentarz"
   .uk-grid
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :harvest_at, as: :string, input_html:{ "data-uk-datepicker"=> "{format:'YYYY-MM-DD'}"}, label: "Data zebrania"
     .uk-width-medium-1-2.uk-width-1-1
       = f.input :crop, label: "Plon"
       %p.form-field-info *Podaj plon w tonach
+
   = f.button :submit,  class: 'uk-margin-top uk-width-1-1 uk-button uk-button-primary uk-button-large'

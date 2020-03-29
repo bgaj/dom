@@ -22,7 +22,6 @@ module Gospodarstwo
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Europe/Warsaw'
-    config.react.addons = true
     config.i18n.available_locales = [:pl, :en]
     config.i18n.default_locale = :pl
     config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
